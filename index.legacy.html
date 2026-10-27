@@ -1,0 +1,3452 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>حكايتنا .. الي هنحكيها لاولادنا | من أول كلام... لحد دلوقتي</title>
+  
+  <!-- Favicon / Meta -->
+  <meta name="description" content="عالم خاص جداً، أرشيف ذكريات، ومتحف رقمي معمول مخصوص لهنا وشريف." />
+  <meta name="theme-color" content="#07070a" />
+  
+  <!-- Google Fonts: Cairo, Tajawal, Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet" />
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <!-- Tailwind CSS CDN -->
+  <script>
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#07070a',
+            charcoal: '#0c0a14',
+            surface: '#12101e',
+            'surface-light': '#1a162b',
+            'purple-deep': '#240e46',
+            'purple-primary': '#7c3aed',
+            'purple-glow': '#a855f7',
+            'purple-light': '#c084fc',
+            lavender: '#ddd6fe',
+            'crimson-dark': '#5a1025',
+            'crimson-bright': '#ef4444',
+          },
+          fontFamily: {
+            tajawal: ['Tajawal', 'sans-serif'],
+            cairo: ['Cairo', 'sans-serif'],
+            jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          boxShadow: {
+            'purple-glow': '0 0 35px -5px rgba(124, 58, 237, 0.4)',
+            'purple-glow-lg': '0 0 60px -10px rgba(168, 85, 247, 0.5)',
+            'crimson-glow': '0 0 35px -5px rgba(239, 68, 68, 0.4)',
+            'card-glass': '0 8px 32px 0 rgba(0, 0, 0, 0.6)',
+          },
+          animation: {
+            'float-slow': 'float 6s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+            'shimmer': 'shimmer 2.5s linear infinite',
+            'glitch': 'glitch 1s infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.4', filter: 'blur(20px)' },
+              '50%': { opacity: '0.8', filter: 'blur(28px)' },
+            },
+            shimmer: {
+              '0%': { backgroundPosition: '-200% 0' },
+              '100%': { backgroundPosition: '200% 0' },
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Canvas Confetti & Fallback -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script>
+    if (typeof window.confetti !== 'function') {
+      window.confetti = function() { /* Safe no-op fallback if CDN is blocked */ };
+    }
+  </script>
+
+  <style>
+    /* Base resets & typography */
+    * {
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #07070a;
+      color: #f5f3ff;
+      font-family: 'Tajawal', sans-serif;
+      overflow-x: hidden;
+      selection-background-color: #7c3aed;
+      selection-color: #ffffff;
+    }
+    ::selection {
+      background: #7c3aed;
+      color: #ffffff;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #07070a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #240e46;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #7c3aed;
+    }
+
+    /* Glassmorphism Classes */
+    .glass-panel {
+      background: rgba(18, 16, 30, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .glass-panel-hover {
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-panel-hover:hover {
+      border-color: rgba(168, 85, 247, 0.35);
+      box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.3);
+      transform: translateY(-3px);
+    }
+    .glass-pill {
+      background: rgba(26, 22, 43, 0.65);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    /* Persona Aura Overrides */
+    body.persona-shereef {
+      --accent-color: #8b5cf6;
+      --glow-color: rgba(139, 92, 246, 0.35);
+    }
+    body.persona-dark {
+      --accent-color: #ef4444;
+      --glow-color: rgba(239, 68, 68, 0.35);
+    }
+    body.persona-balbal {
+      --accent-color: #f59e0b;
+      --glow-color: rgba(245, 158, 11, 0.35);
+    }
+    body.persona-seela {
+      --accent-color: #38bdf8;
+      --glow-color: rgba(56, 189, 248, 0.35);
+    }
+    body.persona-seela #ambient-canvas {
+      filter: hue-rotate(185deg) brightness(1.2);
+    }
+    
+    /* CRT Scanline effect for Dark Sharif */
+    body.persona-dark::after {
+      content: " ";
+      display: block;
+      position: fixed;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+      z-index: 999;
+      background-size: 100% 3px, 6px 100%;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    /* Envelope 3D styling */
+    .envelope-card {
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .envelope-card:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    /* Polaroids styling */
+    .polaroid-frame {
+      box-shadow: 0 12px 35px -8px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      touch-action: none;
+    }
+    .polaroid-frame:hover {
+      box-shadow: 0 20px 45px -5px rgba(124, 58, 237, 0.4), 0 0 0 1px rgba(168, 85, 247, 0.4);
+    }
+
+    /* Touch target ergonomics */
+    .min-touch {
+      min-height: 48px;
+      min-width: 48px;
+    }
+
+    /* Smooth shake for password errors */
+    @keyframes shakeAnimation {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-10px); }
+      40%, 80% { transform: translateX(10px); }
+    }
+    .shake-error {
+      animation: shakeAnimation 0.45s ease-in-out;
+    }
+
+    /* Masked text reveal */
+    .fade-in-blur {
+      animation: fadeInBlur 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes fadeInBlur {
+      0% { opacity: 0; filter: blur(12px); transform: scale(0.96); }
+      100% { opacity: 1; filter: blur(0); transform: scale(1); }
+    }
+
+    /* Hero Subtitles Entrance Animation & Harmonious Layout */
+    @keyframes heroSubtitleIn {
+      0% {
+        opacity: 0;
+        transform: translateY(12px) scale(0.94);
+        filter: blur(4px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+    .hero-subtitle-badge {
+      opacity: 0;
+      animation: heroSubtitleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .hero-sub-delay-1 {
+      animation-delay: 0.35s;
+    }
+    .hero-sub-delay-2 {
+      animation-delay: 0.6s;
+    }
+    .hero-subtitle-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
+      border-color: rgba(168, 85, 247, 0.5);
+    }
+  </style>
+</head>
+<body class="bg-obsidian text-zinc-100 min-h-screen relative font-tajawal selection:bg-purple-600 selection:text-white">
+
+  <!-- Background Canvas for Ambient Stars & Purple Dust -->
+  <canvas id="ambient-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-60"></canvas>
+
+  <!-- Global Toast Notification Container -->
+  <div id="toast-container" class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] flex flex-col items-center gap-2 pointer-events-none w-full max-w-sm px-4"></div>
+
+  <!-- Audio Pill (Floating Ambient Sound Generator & Fallback Player) -->
+  <div class="fixed top-5 left-5 z-50 flex items-center gap-2">
+    <button id="audio-toggle-btn" class="glass-pill px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs md:text-sm font-tajawal text-lavender hover:text-white hover:border-purple-500/50 transition-all shadow-card-glass min-touch group" title="صوت الحكاية">
+      <span class="relative flex h-3 w-3">
+        <span id="audio-pulse" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75 hidden"></span>
+        <span id="audio-dot" class="relative inline-flex rounded-full h-3 w-3 bg-zinc-600 group-hover:bg-purple-400 transition-colors"></span>
+      </span>
+      <i id="audio-icon" class="fa-solid fa-volume-xmark text-sm transition-transform group-hover:scale-110"></i>
+      <span id="audio-label" class="tracking-wide">صوت الحكاية: صامت</span>
+    </button>
+    <audio id="local-audio-player" src="music.mp3" preload="none" loop class="hidden"></audio>
+  </div>
+
+  <!-- Persona Indicator Badge (Top Right) -->
+  <div class="fixed top-5 right-5 z-50">
+    <button id="persona-pill-btn" onclick="openPersonaModal()" class="glass-pill px-3.5 py-2 rounded-full flex items-center gap-2 text-xs md:text-sm font-tajawal text-zinc-300 hover:text-white hover:border-purple-400/40 transition-all shadow-card-glass min-touch">
+      <span id="persona-indicator-icon">🤍</span>
+      <span id="persona-indicator-name" class="font-bold">شريف الحنين</span>
+      <i class="fa-solid fa-chevron-down text-[10px] text-zinc-400"></i>
+    </button>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- PHASE 1: THE CINEMATIC ENTRY GATE & TROLL  -->
+  <!-- ========================================== -->
+  <section id="entry-gate" class="fixed inset-0 z-[90] bg-[#07070a] flex flex-col items-center justify-center px-4 transition-all duration-1000">
+    <div class="w-full max-w-md mx-auto text-center relative z-10 flex flex-col items-center">
+      
+      <!-- Sequential Monologue -->
+      <div id="gate-monologue-box" class="min-h-[140px] flex flex-col items-center justify-center mb-8 px-4 cursor-pointer" onclick="revealPasswordCardImmediately()" title="اضغطي للتخطي فوراً">
+        <p id="gate-monologue-text" class="text-lg md:text-2xl text-purple-200/90 font-tajawal font-medium leading-relaxed tracking-wide transition-opacity duration-700 opacity-0 mb-3">
+          <!-- Text dynamically loaded via JS -->
+        </p>
+        <button 
+          type="button" 
+          onclick="event.stopPropagation(); revealPasswordCardImmediately();" 
+          class="text-xs text-purple-300 hover:text-white bg-purple-950/70 hover:bg-purple-900 border border-purple-500/30 px-4 py-2 rounded-full transition-all flex items-center gap-2 shadow-sm min-touch"
+        >
+          <span>تخطي للرمز السري</span>
+          <i class="fa-solid fa-bolt text-[11px] text-yellow-400"></i>
+        </button>
+      </div>
+
+      <!-- Password Challenge Card (Hidden initially, reveals after monologue) -->
+      <div id="gate-password-card" class="w-full glass-panel rounded-3xl p-6 md:p-8 shadow-purple-glow opacity-0 translate-y-6 transition-all duration-700 border border-purple-500/20">
+        
+        <div class="inline-flex p-3 rounded-2xl bg-purple-950/60 border border-purple-500/30 text-purple-300 mb-4 shadow-inner">
+          <i class="fa-solid fa-lock text-xl"></i>
+        </div>
+
+        <h2 class="text-xl md:text-2xl font-bold font-cairo text-white mb-2 leading-snug">
+          ميتينك حرقتي المفاجأة بس اهو.. 😂
+        </h2>
+        <p class="text-xs md:text-sm text-zinc-400 font-tajawal mb-6">
+          اكتبي أكتر حاجة بحبها بعدك... آه هي اللي في دماغك...
+        </p>
+
+        <!-- Form -->
+        <div class="space-y-4 w-full">
+          <div class="relative w-full">
+            <input 
+              type="password" 
+              id="password-input" 
+              placeholder="اكتبي الباسورد السري..."
+              autocomplete="off"
+              class="w-full px-5 py-4 rounded-2xl bg-black/50 border border-purple-500/30 text-center text-white placeholder-zinc-500 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/30 transition-all font-tajawal text-base md:text-lg min-touch tracking-wider"
+            />
+            <button 
+              type="button" 
+              id="toggle-pwd-visibility" 
+              class="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-purple-300 min-touch flex items-center justify-center p-2"
+              title="إظهار / إخفاء"
+            >
+              <i class="fa-regular fa-eye text-sm"></i>
+            </button>
+          </div>
+
+          <!-- Troll Escaping Button Container -->
+          <div class="relative w-full pt-2 min-h-[70px] flex items-center justify-center">
+            <button 
+              type="button" 
+              id="troll-btn" 
+              class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-purple-700 via-purple-600 to-indigo-700 hover:from-purple-600 hover:to-indigo-600 text-white font-cairo font-bold text-base md:text-lg shadow-purple-glow transition-all duration-300 min-touch active:scale-95 flex items-center justify-center gap-2 group"
+            >
+              <span id="troll-btn-text">دوسي هنا عشان ندخل يلا</span>
+              <i class="fa-solid fa-arrow-left text-sm group-hover:-translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+          <p class="text-[11px] text-zinc-500 font-tajawal text-center">
+            💡 أو اضغطي Enter في الكيبورد للدخول فوراً
+          </p>
+
+          <!-- Subtle hint toggle -->
+          <div class="pt-2 text-center">
+            <button type="button" id="hint-btn" class="text-xs text-purple-400/70 hover:text-purple-300 underline font-tajawal">
+              محتاجة مساعدة في الباسورد؟ 👀
+            </button>
+            <p id="hint-text" class="text-xs text-zinc-400 mt-2 hidden transition-all">
+              (جربي: ليتل دارك أو little dark أو 2409 أو هنا)
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Spatial Warp / Cinematic Unlocking Overlay -->
+    <div id="unlock-warp-overlay" onclick="finishWarpImmediately()" class="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center px-4 pointer-events-none opacity-0 transition-opacity duration-1000 cursor-pointer">
+      <div class="text-center space-y-4 max-w-lg">
+        <h1 id="warp-line-1" class="text-3xl md:text-5xl font-extrabold font-cairo text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-pink-200 to-white opacity-0 transition-opacity duration-700">
+          Hey, HANONTY ❤️
+        </h1>
+        <p id="warp-line-2" class="text-lg md:text-2xl text-purple-300 font-jakarta tracking-wide opacity-0 transition-opacity duration-700">
+          I made a little place for us.
+        </p>
+        <p id="warp-line-3" class="text-xl md:text-3xl text-lavender font-tajawal font-bold opacity-0 transition-opacity duration-700 pt-4">
+          أهلاً بيكي في عالمي .. عالمنا.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================== -->
+  <!-- MAIN APPLICATION WORLD                     -->
+  <!-- ========================================== -->
+  <main id="main-world" class="relative z-10 w-full min-h-screen opacity-0 transition-opacity duration-1000">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative min-h-[92vh] flex flex-col items-center justify-center px-4 pt-20 pb-16 text-center">
+      
+      <!-- Top Soft Aura -->
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-72 md:w-96 h-72 md:h-96 bg-purple-700/20 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse-glow"></div>
+
+      <!-- Identity Header -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-purple-950/40 border border-purple-500/20 text-purple-300 text-xs md:text-sm font-tajawal mb-6 shadow-inner">
+        <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
+        <span>أرشيفنا الخاص • مكان مفيش فيه غيرنا</span>
+      </div>
+
+      <!-- Names Banner (English, Perfectly Balanced & Animated) -->
+      <div class="flex items-center justify-center gap-4 sm:gap-8 md:gap-14 mb-8 md:mb-12 w-full max-w-4xl mx-auto px-2" dir="ltr">
+        
+        <!-- Sharif Column -->
+        <div class="flex flex-col items-center text-center flex-1 min-w-0">
+          <span class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black font-jakarta tracking-tight text-white drop-shadow-[0_2px_22px_rgba(255,255,255,0.18)] hover:scale-105 transition-transform duration-300 cursor-default select-none">
+            SHARIF
+          </span>
+          <div class="hero-subtitle-badge hero-sub-delay-1 mt-2.5 sm:mt-3 px-3 sm:px-4 py-1 rounded-full bg-purple-950/50 border border-purple-500/25 text-[10px] sm:text-xs md:text-sm font-jakarta tracking-wider text-purple-200/90 whitespace-nowrap shadow-inner flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span>
+            <span>and other characters</span>
+          </div>
+        </div>
+
+        <!-- Separator Cross (Vertically centered with names) -->
+        <div class="flex items-center justify-center shrink-0 -mt-6 sm:-mt-8 md:-mt-10">
+          <span class="text-2xl sm:text-4xl md:text-5xl font-light text-purple-400/60 font-jakarta select-none animate-pulse px-1">
+            ×
+          </span>
+        </div>
+
+        <!-- Hana Column -->
+        <div class="flex flex-col items-center text-center flex-1 min-w-0">
+          <span class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black font-jakarta tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-pink-100 to-purple-400 drop-shadow-[0_2px_22px_rgba(168,85,247,0.35)] hover:scale-105 transition-transform duration-300 cursor-default select-none">
+            HANA
+          </span>
+          <div class="hero-subtitle-badge hero-sub-delay-2 mt-2.5 sm:mt-3 px-3 sm:px-4 py-1 rounded-full bg-pink-950/50 border border-pink-500/25 text-[10px] sm:text-xs md:text-sm font-jakarta tracking-widest uppercase font-bold text-pink-200/90 whitespace-nowrap shadow-inner flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse"></span>
+            <span>LITTLE DARK</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Tagline -->
+      <h2 class="text-lg md:text-3xl text-zinc-300 font-tajawal font-medium max-w-2xl mx-auto mb-2 leading-relaxed">
+        حكايتنا .. الي هنحكيها لاولادنا 💜
+      </h2>
+      <p class="text-sm md:text-lg text-purple-300/70 font-tajawal mb-10">
+        «من أول كلام... لحد دلوقتي.»
+      </p>
+
+      <!-- 4 DYNAMIC MATHEMATICAL LIVE CHRONOMETERS -->
+      <div class="w-full max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-2 mb-12">
+        
+        <!-- Counter 1: Our Real Journey -->
+        <div class="glass-panel glass-panel-hover rounded-2xl p-5 text-center relative overflow-hidden group">
+          <div class="absolute -top-10 -right-10 w-24 h-24 bg-purple-600/10 rounded-full blur-xl group-hover:bg-purple-600/20 transition-all"></div>
+          <div class="text-purple-400 text-xs md:text-sm font-bold font-tajawal mb-2 flex items-center justify-center gap-1.5">
+            <i class="fa-solid fa-infinity text-xs"></i>
+            <span>حكايتنا بدأت</span>
+          </div>
+          <div id="chrono-journey" class="text-xl md:text-2xl font-black font-jakarta text-white tracking-tight my-1">
+            00d 00h 00m 00s
+          </div>
+          <p class="text-[11px] text-zinc-400 font-tajawal">أول يوم جيت الدنيا لما عرفتك</p>
+        </div>
+
+        <!-- Counter 2: Hana's Life -->
+        <div class="glass-panel glass-panel-hover rounded-2xl p-5 text-center relative overflow-hidden group">
+          <div class="absolute -top-10 -right-10 w-24 h-24 bg-pink-600/10 rounded-full blur-xl group-hover:bg-pink-600/20 transition-all"></div>
+          <div class="text-pink-400 text-xs md:text-sm font-bold font-tajawal mb-2 flex items-center justify-center gap-1.5">
+            <i class="fa-solid fa-cake-candles text-xs"></i>
+            <span>عمر ليتل دوك</span>
+          </div>
+          <div id="chrono-hana" class="text-xl md:text-2xl font-black font-jakarta text-white tracking-tight my-1">
+            00y 00d 00h
+          </div>
+          <p class="text-[11px] text-zinc-400 font-tajawal">أول يوم جيتي الدنيا (31/07/2009)</p>
+        </div>
+
+        <!-- Counter 3: Sharif's Life -->
+        <div class="glass-panel glass-panel-hover rounded-2xl p-5 text-center relative overflow-hidden group">
+          <div class="absolute -top-10 -right-10 w-24 h-24 bg-indigo-600/10 rounded-full blur-xl group-hover:bg-indigo-600/20 transition-all"></div>
+          <div class="text-indigo-400 text-xs md:text-sm font-bold font-tajawal mb-2 flex items-center justify-center gap-1.5">
+            <i class="fa-solid fa-calendar-day text-xs"></i>
+            <span>عمر شريف</span>
+          </div>
+          <div id="chrono-sharif" class="text-xl md:text-2xl font-black font-jakarta text-white tracking-tight my-1">
+            00y 00d 00h
+          </div>
+          <p class="text-[11px] text-zinc-400 font-tajawal">أول يوم اتولدت عادي (01/10/2002)</p>
+        </div>
+
+        <!-- Counter 4: Official Milestone -->
+        <div class="glass-panel glass-panel-hover rounded-2xl p-5 text-center relative overflow-hidden group">
+          <div class="absolute -top-10 -right-10 w-24 h-24 bg-violet-600/10 rounded-full blur-xl group-hover:bg-violet-600/20 transition-all"></div>
+          <div class="text-violet-400 text-xs md:text-sm font-bold font-tajawal mb-2 flex items-center justify-center gap-1.5">
+            <i class="fa-solid fa-heart-pulse text-xs"></i>
+            <span>ثابتين مع بعض</span>
+          </div>
+          <div id="chrono-milestone" class="text-xl md:text-2xl font-black font-jakarta text-white tracking-tight my-1">
+            842+ Days
+          </div>
+          <p class="text-[11px] text-zinc-400 font-tajawal">وكل ثانية حبنا بيكبر أكتر</p>
+        </div>
+
+      </div>
+
+      <!-- Playful Teaser CTA Button -->
+      <div class="flex flex-col items-center gap-4">
+        <a 
+          href="#story-intro" 
+          id="hero-cta-btn" 
+          class="px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-800 text-white font-cairo font-bold text-base md:text-lg shadow-purple-glow hover:shadow-purple-glow-lg transition-all transform hover:-translate-y-1 active:scale-95 flex items-center gap-3 min-touch"
+        >
+          <span id="hero-cta-label">شوفي الحكاية ✨</span>
+          <i class="fa-solid fa-chevron-down text-sm"></i>
+        </a>
+        
+        <p class="text-xs text-zinc-500 font-tajawal flex items-center gap-2">
+          <span>انزلي تحت بالراحة واستمتعي بكل تفصيلة</span>
+          <i class="fa-solid fa-arrow-down-long animate-bounce text-purple-400"></i>
+        </p>
+      </div>
+
+      <!-- 4 Quick Memory Shortcuts Cards -->
+      <div class="w-full max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-3 mt-14">
+        <a href="#ch-01" class="glass-pill p-3.5 rounded-2xl flex items-center justify-center gap-2 hover:border-purple-400/40 transition-all group min-touch">
+          <span class="text-lg">🕰</span>
+          <span class="text-xs md:text-sm font-tajawal text-zinc-300 group-hover:text-white font-medium">أول يوم</span>
+        </a>
+        <a href="#vault-card-3" class="glass-pill p-3.5 rounded-2xl flex items-center justify-center gap-2 hover:border-purple-400/40 transition-all group min-touch">
+          <span class="text-lg">❤️</span>
+          <span class="text-xs md:text-sm font-tajawal text-zinc-300 group-hover:text-white font-medium">أول حاجة حلوة</span>
+        </a>
+        <a href="#vault-card-2" class="glass-pill p-3.5 rounded-2xl flex items-center justify-center gap-2 hover:border-purple-400/40 transition-all group min-touch">
+          <span class="text-lg">😂</span>
+          <span class="text-xs md:text-sm font-tajawal text-zinc-300 group-hover:text-white font-medium">أكتر موقف ضحكنا فيه</span>
+        </a>
+        <a href="#vault-card-5" class="glass-pill p-3.5 rounded-2xl flex items-center justify-center gap-2 hover:border-purple-400/40 transition-all group min-touch">
+          <span class="text-lg">🥹</span>
+          <span class="text-xs md:text-sm font-tajawal text-zinc-300 group-hover:text-white font-medium">ذكرى مستحيل ننساها</span>
+        </a>
+      </div>
+
+    </section>
+
+    <!-- SECTION: CINEMATIC STORY INTRO («قبل ما نفهم إحنا بنعمل إيه») -->
+    <section id="story-intro" class="py-24 px-4 relative flex flex-col items-center justify-center text-center overflow-hidden">
+      <div class="max-w-2xl mx-auto space-y-8">
+        
+        <div class="inline-block px-4 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs text-purple-400 font-jakarta uppercase tracking-widest">
+          Cinematic Prologue
+        </div>
+
+        <h2 class="text-2xl md:text-4xl font-black font-cairo text-white">
+          قبل ما تبقى حكاية...
+        </h2>
+
+        <!-- Sequential Storytelling Scroll Reveal Blocks -->
+        <div class="space-y-6 text-base md:text-2xl font-tajawal leading-relaxed text-zinc-300 font-light">
+          <p class="story-fade-node opacity-60 hover:opacity-100 transition-opacity">في البداية...</p>
+          <p class="story-fade-node opacity-60 hover:opacity-100 transition-opacity">مكنش في حكاية.</p>
+          <p class="story-fade-node opacity-60 hover:opacity-100 transition-opacity">كان مجرد كلام.</p>
+          <p class="story-fade-node opacity-60 hover:opacity-100 transition-opacity">كلام كتير.. وهزار.. وحكايات ملهاش لازمة.</p>
+          <p class="story-fade-node opacity-60 hover:opacity-100 transition-opacity">وجودك بقى عادة في يومي.</p>
+          <p class="story-fade-node text-purple-300 font-medium">والعادة بقت حاجة أكبر بكتير من مجرد تعود...</p>
+          <div class="pt-4">
+            <span class="inline-block text-xl md:text-3xl font-bold font-cairo text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-300 to-white">
+              وبعدين حصلت الحكاية.
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SECTION: THE EDITORIAL CHAPTER SYSTEM -->
+    <section id="chapters" class="py-20 px-4 max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="text-xs uppercase font-jakarta tracking-widest text-purple-400 bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-purple-800/40">
+          The Chronicles
+        </span>
+        <h2 class="text-3xl md:text-5xl font-black font-cairo text-white mt-4 mb-3">
+          فصول الحكاية
+        </h2>
+        <p class="text-sm md:text-base text-zinc-400 font-tajawal max-w-xl mx-auto">
+          كل محطة عشناها مع بعض، مكتوبة بكل صدق ومن غير ولا كلمة زيادة.
+        </p>
+      </div>
+
+      <div class="space-y-8">
+        
+        <!-- Chapter 01 -->
+        <div id="ch-01" class="glass-panel rounded-3xl p-6 md:p-8 border border-white/5 hover:border-purple-500/30 transition-all">
+          <div class="flex items-center justify-between gap-4 mb-4 flex-wrap">
+            <span class="text-xs font-jakarta uppercase tracking-widest text-purple-400 font-bold px-3 py-1 rounded-lg bg-purple-950/60">
+              CHAPTER 01
+            </span>
+            <span class="text-xs text-zinc-400 font-tajawal">البداية الأولى</span>
+          </div>
+          <h3 class="text-xl md:text-2xl font-bold font-cairo text-white mb-3">
+            كيف بدأت الحكاية (How It Started)
+          </h3>
+          <p class="text-zinc-300 font-tajawal text-sm md:text-base leading-relaxed">
+            فاكر أول مرة اتكلمنا؟ كانت صدفة مش هتغيب عن بالي لحظة واحدة.. اتعرفنا في ظروف وسخة بس كانت أحلى وأعظم صدفة حصلت في عمري كله. اليوم ده اتغيرت فيه حاجات كتير جوايا وأنا مكنتش واخد بالي.
+          </p>
+        </div>
+
+        <!-- Chapter 02: Upcoming Milestone -->
+        <div id="ch-02" class="glass-panel rounded-3xl p-6 md:p-8 border border-purple-500/20 bg-purple-950/20 relative overflow-hidden">
+          <div class="absolute -left-12 -bottom-12 w-40 h-40 bg-purple-600/10 rounded-full blur-2xl pointer-events-none"></div>
+          <div class="flex items-center justify-between gap-4 mb-4 flex-wrap">
+            <span class="text-xs font-jakarta uppercase tracking-widest text-pink-400 font-bold px-3 py-1 rounded-lg bg-pink-950/60 flex items-center gap-1.5">
+              <i class="fa-solid fa-hourglass-half text-[10px]"></i>
+              CHAPTER 02 — UPCOMING MILESTONE
+            </span>
+            <span class="text-xs text-pink-300 font-tajawal font-medium">خطوة مستنينها سوا</span>
+          </div>
+          <h3 class="text-xl md:text-2xl font-bold font-cairo text-white mb-3">
+            المقابلة الأولى (The First Real Meeting)
+          </h3>
+          <p class="text-zinc-300 font-tajawal text-sm md:text-base leading-relaxed mb-4">
+            المقابلة الأولى: لا دي بنخططلها بقالنا سنتين.. ادعي ربنا يقدرنا نعملها قريب وتكون أحلى وأعظم مقابلة في الدنيا كلها، ونقف فيها قدام بعض ونصدق إننا أخيراً لمسنا الواقع.
+          </p>
+          <div class="inline-flex items-center gap-2 text-xs text-purple-300 bg-purple-900/30 px-3 py-1.5 rounded-full border border-purple-500/30">
+            <i class="fa-regular fa-calendar-check"></i>
+            <span>الحدث ده هيتحول لذكرى مكتملة أول ما نتقابل على الحقيقة ❤️</span>
+          </div>
+        </div>
+
+        <!-- Chapter 03 -->
+        <div id="ch-03" class="glass-panel rounded-3xl p-6 md:p-8 border border-white/5 hover:border-purple-500/30 transition-all">
+          <div class="flex items-center justify-between gap-4 mb-4 flex-wrap">
+            <span class="text-xs font-jakarta uppercase tracking-widest text-purple-400 font-bold px-3 py-1 rounded-lg bg-purple-950/60">
+              CHAPTER 03
+            </span>
+            <span class="text-xs text-zinc-400 font-tajawal">لحظة الإدراك</span>
+          </div>
+          <h3 class="text-xl md:text-2xl font-bold font-cairo text-white mb-3">
+            اليوم اللي فهمت فيه (When I Realized...)
+          </h3>
+          <p class="text-zinc-300 font-tajawal text-sm md:text-base leading-relaxed">
+            لحظة الإدراك: حرفياً كأني كنت معمي وفتحت لما شوفتك.. أسعد لحظات حياتي لما اتأكدت إنك الشخص الوحيد اللي مستعد ومصمم أكمل معاه عمري كله، وإن مفيش غيرك هيملا عيني أو قلبي.
+          </p>
+        </div>
+
+        <!-- Chapter 04 -->
+        <div id="ch-04" class="glass-panel rounded-3xl p-6 md:p-8 border border-white/5 hover:border-purple-500/30 transition-all">
+          <div class="flex items-center justify-between gap-4 mb-4 flex-wrap">
+            <span class="text-xs font-jakarta uppercase tracking-widest text-purple-400 font-bold px-3 py-1 rounded-lg bg-purple-950/60">
+              CHAPTER 04
+            </span>
+            <span class="text-xs text-zinc-400 font-tajawal">الأيام الحلوة</span>
+          </div>
+          <h3 class="text-xl md:text-2xl font-bold font-cairo text-white mb-3">
+            أحلى اللحظات والتصافي (Our Favorite Memories)
+          </h3>
+          <p class="text-zinc-300 font-tajawal text-sm md:text-base leading-relaxed">
+            أحلى اللحظات: في مليون لحظة.. بس الأسعد بالنسبالي فعلاً كمية الراحة والحب بعد لحظات الصفا بعد كل خناقة، وضحكتك اللي بتنسيني الدنيا وما فيها.
+          </p>
+        </div>
+
+        <!-- Chapter 05 -->
+        <div id="ch-05" class="glass-panel rounded-3xl p-6 md:p-8 border border-white/5 hover:border-purple-500/30 transition-all">
+          <div class="flex items-center justify-between gap-4 mb-4 flex-wrap">
+            <span class="text-xs font-jakarta uppercase tracking-widest text-emerald-400 font-bold px-3 py-1 rounded-lg bg-emerald-950/60">
+              CHAPTER 05 — LIVE
+            </span>
+            <span id="chapter-today-date" class="text-xs text-zinc-400 font-tajawal">جاري التحميل...</span>
+          </div>
+          <h3 class="text-xl md:text-2xl font-bold font-cairo text-white mb-3">
+            النهارده.. والحكاية لسه مكملة
+          </h3>
+          <p class="text-zinc-300 font-tajawal text-sm md:text-base leading-relaxed">
+            كل يوم بيعدي بيثبتلي إني اخترت صح، وإن كل تعب وخناق ومسافة بيقربونا من بعض أكتر. إحنا مش مجرد اتنين بيكلموا بعض.. إحنا حكاية بتكبر يوم بعد يوم.
+          </p>
+        </div>
+
+        <!-- Chapter Infinity -->
+        <div class="text-center py-6">
+          <span class="text-sm md:text-base font-jakarta font-bold text-purple-400 tracking-widest uppercase">
+            CHAPTER ∞ — TO BE CONTINUED...
+          </span>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SECTION: THE MEMORY VAULT («ذكرياتنا») -->
+    <section id="vault" class="py-20 px-4 max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="text-xs uppercase font-jakarta tracking-widest text-purple-400 bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-purple-800/40">
+          The Memory Vault
+        </span>
+        <h2 class="text-3xl md:text-5xl font-black font-cairo text-white mt-4 mb-3">
+          ذكرياتنا الحقيقية
+        </h2>
+        <p class="text-sm md:text-base text-zinc-400 font-tajawal max-w-xl mx-auto">
+          المواقف اللي ثبتت في الذاكرة ومستحيل تتمسح، بكل تفصيلة حصلت بجد.
+        </p>
+
+        <!-- Quick Random Memory Button -->
+        <div class="mt-6 flex justify-center">
+          <button 
+            type="button" 
+            onclick="triggerRandomMemory()" 
+            class="px-6 py-2.5 rounded-full glass-panel hover:border-purple-400 text-purple-300 hover:text-white font-tajawal text-xs md:text-sm font-bold transition-all shadow-card-glass flex items-center gap-2 min-touch"
+          >
+            <i class="fa-solid fa-dice text-sm"></i>
+            <span>فاجئيني بذكرى من الأرشيف 🎲</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 6 Real Memory Cards Grid -->
+      <div id="memories-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered dynamically from CONFIG.memories -->
+      </div>
+    </section>
+
+
+    <!-- SECTION: POLAROID PHOTO WALL («لو كنا صورناها...») -->
+    <section id="polaroids" class="py-20 px-4 max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="text-xs uppercase font-jakarta tracking-widest text-purple-400 bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-purple-800/40">
+          Artistic Reconstructions
+        </span>
+        <h2 class="text-3xl md:text-5xl font-black font-cairo text-white mt-4 mb-3">
+          لو كنا صورناها...
+        </h2>
+        <p class="text-sm md:text-base text-zinc-400 font-tajawal max-w-xl mx-auto">
+          لحظات حصلت بجد بس مكناش ماسكين كاميرا.. دوسي دبل كليك على أي صورة عشان تبعتيلها قلوب ❤️
+        </p>
+      </div>
+
+      <!-- 4 Polaroid Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-2">
+        
+        <!-- Polaroid 1 -->
+        <div class="polaroid-card polaroid-frame bg-[#14121d] rounded-2xl p-4 flex flex-col items-center rotate-[-2deg] hover:rotate-0 transition-transform cursor-pointer" onclick="handlePolaroidClick(this)">
+          <div class="w-full aspect-square rounded-xl bg-purple-950/50 border border-purple-500/20 flex flex-col items-center justify-center p-4 text-center relative overflow-hidden group">
+            <i class="fa-solid fa-cloud-moon text-3xl text-purple-400/80 mb-2"></i>
+            <span class="text-xs text-purple-300 font-bold font-tajawal">رصيف المدرسة والشتا</span>
+            <span class="text-[10px] text-zinc-400 font-tajawal mt-1">ماتش الشرابات وقاعدة البرد</span>
+            <!-- Artistic Reconstruction Badge -->
+            <div class="absolute bottom-2 inset-x-2 bg-black/80 rounded-md py-1 px-1.5 text-[9px] text-zinc-300 font-tajawal border border-white/5">
+              اللحظة دي حصلت بجد... الصورة لأ
+            </div>
+          </div>
+          <p class="font-cairo text-xs text-zinc-300 font-semibold mt-3 text-center">أبرار، الرصيف، والبوتات ❄️</p>
+        </div>
+
+        <!-- Polaroid 2 -->
+        <div class="polaroid-card polaroid-frame bg-[#14121d] rounded-2xl p-4 flex flex-col items-center rotate-[2deg] hover:rotate-0 transition-transform cursor-pointer" onclick="handlePolaroidClick(this)">
+          <div class="w-full aspect-square rounded-xl bg-purple-950/50 border border-purple-500/20 flex flex-col items-center justify-center p-4 text-center relative overflow-hidden group">
+            <i class="fa-solid fa-video text-3xl text-pink-400/80 mb-2"></i>
+            <span class="text-xs text-pink-300 font-bold font-tajawal">فيديو أولى ثانوي</span>
+            <span class="text-[10px] text-zinc-400 font-tajawal mt-1">تعديل الطرحة والحب اللي طلع فجأة</span>
+            <div class="absolute bottom-2 inset-x-2 bg-black/80 rounded-md py-1 px-1.5 text-[9px] text-zinc-300 font-tajawal border border-white/5">
+              اللحظة دي حصلت بجد... الصورة لأ
+            </div>
+          </div>
+          <p class="font-cairo text-xs text-zinc-300 font-semibold mt-3 text-center">معرفش ليه بس كنت حباك أوي ❤️</p>
+        </div>
+
+        <!-- Polaroid 3 -->
+        <div class="polaroid-card polaroid-frame bg-[#14121d] rounded-2xl p-4 flex flex-col items-center rotate-[-1deg] hover:rotate-0 transition-transform cursor-pointer" onclick="handlePolaroidClick(this)">
+          <div class="w-full aspect-square rounded-xl bg-purple-950/50 border border-purple-500/20 flex flex-col items-center justify-center p-4 text-center relative overflow-hidden group">
+            <i class="fa-solid fa-desktop text-3xl text-indigo-400/80 mb-2"></i>
+            <span class="text-xs text-indigo-300 font-bold font-tajawal">الشير سكرين بالساعات</span>
+            <span class="text-[10px] text-zinc-400 font-tajawal mt-1">أهدى وأحلى أيام حياتنا</span>
+            <div class="absolute bottom-2 inset-x-2 bg-black/80 rounded-md py-1 px-1.5 text-[9px] text-zinc-300 font-tajawal border border-white/5">
+              اللحظة دي حصلت بجد... الصورة لأ
+            </div>
+          </div>
+          <p class="font-cairo text-xs text-zinc-300 font-semibold mt-3 text-center">كلام بدون أي خناق 📱</p>
+        </div>
+
+        <!-- Polaroid 4 -->
+        <div class="polaroid-card polaroid-frame bg-[#14121d] rounded-2xl p-4 flex flex-col items-center rotate-[3deg] hover:rotate-0 transition-transform cursor-pointer" onclick="handlePolaroidClick(this)">
+          <div class="w-full aspect-square rounded-xl bg-purple-950/50 border border-purple-500/20 flex flex-col items-center justify-center p-4 text-center relative overflow-hidden group">
+            <i class="fa-solid fa-users text-3xl text-violet-400/80 mb-2"></i>
+            <span class="text-xs text-violet-300 font-bold font-tajawal">يوم سارة والجروب</span>
+            <span class="text-[10px] text-zinc-400 font-tajawal mt-1">بدايات الهزار وحكاوي ثانوي</span>
+            <div class="absolute bottom-2 inset-x-2 bg-black/80 rounded-md py-1 px-1.5 text-[9px] text-zinc-300 font-tajawal border border-white/5">
+              اللحظة دي حصلت بجد... الصورة لأ
+            </div>
+          </div>
+          <p class="font-cairo text-xs text-zinc-300 font-semibold mt-3 text-center">أول فرحة من غير سبب 😂</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SECTION: REAL CHAT RE-ENACTMENT («شاتنا») -->
+    <section id="chat-archive" class="py-20 px-4 max-w-4xl mx-auto">
+      <div class="text-center mb-14">
+        <span class="text-xs uppercase font-jakarta tracking-widest text-purple-400 bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-purple-800/40">
+          Real Messenger
+        </span>
+        <h2 class="text-3xl md:text-5xl font-black font-cairo text-white mt-4 mb-3">
+          شاتنا الحقيقي
+        </h2>
+        <p class="text-sm md:text-base text-zinc-400 font-tajawal max-w-md mx-auto">
+          المحادثة الحقيقية زي ما حصلت بالظبط بدون أي تحريف.
+        </p>
+      </div>
+
+      <!-- Smartphone Messenger Mockup -->
+      <div class="w-full max-w-sm md:max-w-md mx-auto glass-panel rounded-[2.5rem] border border-zinc-700/60 shadow-2xl p-4 md:p-6 overflow-hidden relative">
+        
+        <!-- Mobile Top Speaker & Camera Notch -->
+        <div class="flex items-center justify-between pb-4 border-b border-zinc-800 mb-4 px-2">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center font-bold text-white text-sm shadow">
+              هـ
+            </div>
+            <div>
+              <div class="text-sm font-bold font-cairo text-white flex items-center gap-1.5">
+                <span>هنا (LITTLE DARK)</span>
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              </div>
+              <p class="text-[10px] text-zinc-400 font-tajawal">متصلة الآن في قلبي</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 text-zinc-400 text-xs">
+            <i class="fa-solid fa-phone"></i>
+            <i class="fa-solid fa-video"></i>
+          </div>
+        </div>
+
+        <!-- Chat Messages Container -->
+        <div id="chat-messages-box" class="space-y-3 min-h-[260px] max-h-[360px] overflow-y-auto px-1 py-2 font-tajawal text-sm">
+          <!-- Messages inserted dynamically via JS -->
+        </div>
+
+        <!-- Typing Indicator -->
+        <div id="chat-typing" class="hidden text-xs text-purple-300 font-tajawal py-1 px-3 items-center gap-1">
+          <span>هنا بتكتب</span>
+          <span class="inline-flex gap-0.5">
+            <span class="w-1 h-1 bg-purple-400 rounded-full animate-bounce"></span>
+            <span class="w-1 h-1 bg-purple-400 rounded-full animate-bounce [animation-delay:0.2s]"></span>
+            <span class="w-1 h-1 bg-purple-400 rounded-full animate-bounce [animation-delay:0.4s]"></span>
+          </span>
+        </div>
+
+        <!-- Interactive Messenger Controls -->
+        <div class="pt-4 border-t border-zinc-800/80 flex items-center justify-between gap-2 mt-2">
+          <button 
+            type="button" 
+            id="chat-prev-btn" 
+            onclick="prevChatMessage()" 
+            class="px-3 py-2 rounded-xl bg-zinc-800/70 hover:bg-zinc-700 text-xs text-zinc-300 font-tajawal min-touch"
+          >
+            السابق
+          </button>
+          
+          <button 
+            type="button" 
+            id="chat-replay-btn" 
+            onclick="replayChat()" 
+            class="px-4 py-2 rounded-xl bg-purple-900/60 hover:bg-purple-800 text-xs text-purple-200 font-tajawal font-bold flex items-center gap-1.5 min-touch"
+          >
+            <i class="fa-solid fa-rotate-right text-[11px]"></i>
+            <span>إعادة تشغيل</span>
+          </button>
+
+          <button 
+            type="button" 
+            id="chat-next-btn" 
+            onclick="nextChatMessage()" 
+            class="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-xs text-white font-tajawal font-bold min-touch"
+          >
+            الرسالة التالية
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SECTION: THE 50 REASONS LOVE JAR («برطمان الـ 50 سبب لحبك») -->
+    <section id="reasons-jar" class="py-20 px-4 max-w-4xl mx-auto">
+      <div class="glass-panel rounded-3xl p-6 md:p-12 text-center relative overflow-hidden border border-purple-500/30 shadow-purple-glow">
+        
+        <div class="inline-flex p-4 rounded-3xl bg-purple-950/70 border border-purple-500/30 text-purple-300 text-3xl mb-5 shadow-inner">
+          🍯
+        </div>
+
+        <span class="text-xs uppercase font-jakarta tracking-widest text-purple-400 block mb-2 font-bold">
+          Love Jar — 50 Reasons
+        </span>
+        <h2 class="text-3xl md:text-5xl font-black font-cairo text-white mb-3">
+          ليه بحبك؟
+        </h2>
+        <p class="text-sm md:text-base text-zinc-300 font-tajawal max-w-lg mx-auto mb-8">
+          50 سبب مكتوبين كلمة كلمة، كل ما تدوسي هيطلعلك سبب حقيقي من قلبي.
+        </p>
+
+        <!-- Dynamic Reason Display Card -->
+        <div class="w-full max-w-xl mx-auto glass-pill rounded-2xl p-6 md:p-8 min-h-[140px] flex flex-col items-center justify-center mb-8 border border-purple-500/20 shadow-inner">
+          <span id="reason-number" class="text-xs text-purple-400 font-bold font-jakarta mb-2">سبب رقم 1 من 50</span>
+          <p id="reason-text" class="text-base md:text-xl font-tajawal text-white font-medium leading-relaxed">
+            عشان ضحكتك بتنسيني كل تعب اليوم في ثانية واحدة.
+          </p>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <button 
+            type="button" 
+            onclick="pickRandomReason()" 
+            class="px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 hover:from-purple-500 hover:to-pink-500 text-white font-cairo font-bold text-base shadow-purple-glow hover:shadow-purple-glow-lg transition-all transform hover:-translate-y-1 active:scale-95 flex items-center gap-2 min-touch"
+          >
+            <i class="fa-solid fa-sparkles"></i>
+            <span>طلعي سبب جديد ✨</span>
+          </button>
+
+          <button 
+            type="button" 
+            onclick="openAllReasonsModal()" 
+            class="px-6 py-4 rounded-full glass-panel hover:border-purple-400/50 text-purple-200 hover:text-white font-tajawal font-semibold text-sm transition-all min-touch"
+          >
+            عرض الـ 50 سبب كاملين
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SECTION: THE 8 INTERACTIVE ENVELOPES («افتحي لما...») -->
+    <section id="envelopes" class="py-20 px-4 max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="text-xs uppercase font-jakarta tracking-widest text-purple-400 bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-purple-800/40">
+          Open When Letters
+        </span>
+        <h2 class="text-3xl md:text-5xl font-black font-cairo text-white mt-4 mb-3">
+          رسائل «افتحي لما...»
+        </h2>
+        <p class="text-sm md:text-base text-zinc-400 font-tajawal max-w-xl mx-auto">
+          جوابات مقفولة مخصوص عشانك، كل جواب تفتحيه في وقته المناسب.
+        </p>
+      </div>
+
+      <!-- 8 Envelopes Grid -->
+      <div id="envelopes-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-2">
+        <!-- Rendered dynamically from CONFIG.envelopes -->
+      </div>
+    </section>
+
+
+    <!-- SECTION: MEMORY QUIZ («فاكرة ولا لأ؟») -->
+    <section id="quiz" class="py-20 px-4 max-w-3xl mx-auto">
+      <div class="glass-panel rounded-3xl p-6 md:p-10 border border-purple-500/20 shadow-purple-glow">
+        
+        <div class="text-center mb-8">
+          <span class="text-xs uppercase font-jakarta tracking-widest text-purple-400 bg-purple-950/60 px-3 py-1 rounded-full">
+            Memory Quiz
+          </span>
+          <h2 class="text-2xl md:text-4xl font-black font-cairo text-white mt-3 mb-2">
+            فاكرة ولا لأ؟ 👀
+          </h2>
+          <p class="text-xs md:text-sm text-zinc-400 font-tajawal">
+            امتحان بسيط في تاريخنا المشترك.. بس متقلقيش مفيش درجات 😂
+          </p>
+        </div>
+
+        <!-- Quiz Container -->
+        <div id="quiz-container">
+          <div class="flex items-center justify-between text-xs text-zinc-400 font-tajawal mb-4">
+            <span id="quiz-progress-text">سؤال 1 من 6</span>
+            <span id="quiz-status-badge" class="text-purple-400 font-bold">ركزي في التفاصيل</span>
+          </div>
+
+          <!-- Question Box -->
+          <div class="glass-pill rounded-2xl p-5 mb-6 border border-white/5">
+            <h3 id="quiz-question-title" class="text-base md:text-xl font-bold font-tajawal text-white leading-relaxed">
+              <!-- Question dynamically injected -->
+            </h3>
+          </div>
+
+          <!-- Options Grid -->
+          <div id="quiz-options-box" class="space-y-3 mb-6">
+            <!-- Options dynamically injected -->
+          </div>
+
+          <!-- Feedback Toast Box -->
+          <div id="quiz-feedback-box" class="min-h-[50px] flex items-center justify-center text-center font-tajawal font-bold text-sm md:text-base hidden">
+            <!-- Feedback text -->
+          </div>
+
+          <!-- Next Button -->
+          <div class="flex justify-end pt-4 border-t border-zinc-800">
+            <button 
+              type="button" 
+              id="quiz-next-btn" 
+              onclick="nextQuizQuestion()" 
+              disabled
+              class="px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:opacity-40 disabled:pointer-events-none text-white font-tajawal font-bold text-sm transition-all min-touch"
+            >
+              السؤال اللي بعده
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Completion Screen (Hidden by default) -->
+        <div id="quiz-result-screen" class="hidden text-center py-6 space-y-4">
+          <div class="text-4xl">🎉</div>
+          <h3 class="text-xl md:text-2xl font-bold font-cairo text-white">
+            واضح إنك فاكرة الحكاية أكتر مني! 😂❤️
+          </h3>
+          <p class="text-sm text-zinc-300 font-tajawal max-w-md mx-auto leading-relaxed">
+            الذاكرة دي طلعت متخزنة بجد.. تسلم دماغك يا ليتل دوك ومفيش تفصيلة هتروح مننا أبداً.
+          </p>
+          <button 
+            type="button" 
+            onclick="resetQuiz()" 
+            class="px-6 py-3 rounded-full bg-purple-900/60 hover:bg-purple-800 text-purple-200 text-xs font-bold font-tajawal transition-all min-touch"
+          >
+            نعيد الامتحان تاني؟
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SECTION: MINI-GAME («بتحبيني قد إيه؟») -->
+    <section id="mini-game" class="py-20 px-4 max-w-3xl mx-auto text-center">
+      <div class="glass-panel rounded-3xl p-8 md:p-12 border border-purple-500/20 relative overflow-hidden">
+        
+        <h2 class="text-2xl md:text-4xl font-black font-cairo text-white mb-3">
+          بتحبيني قد إيه؟ 🥺
+        </h2>
+        <p class="text-sm text-zinc-400 font-tajawal mb-8">
+          سؤال صريح ومفيش فيه مفر.. اختاري الإجابة اللي في قلبك!
+        </p>
+
+        <!-- Interactive Buttons Container -->
+        <div class="relative w-full min-h-[140px] flex flex-wrap items-center justify-center gap-6">
+          
+          <!-- Love Yes Button -->
+          <button 
+            type="button" 
+            id="love-yes-btn" 
+            onclick="handleLoveYesClick()" 
+            class="px-8 py-4 rounded-full bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-500 hover:to-pink-500 text-white font-cairo font-bold text-lg shadow-crimson-glow hover:scale-105 transition-all min-touch flex items-center gap-2"
+          >
+            <span>بحبك موت ❤️</span>
+          </button>
+
+          <!-- Runaway No Button -->
+          <button 
+            type="button" 
+            id="love-no-btn" 
+            onmouseover="evadeLoveNoBtn(event)" 
+            ontouchstart="evadeLoveNoBtn(event)"
+            onclick="handleLoveNoClick()" 
+            class="px-8 py-4 rounded-full bg-zinc-800/80 hover:bg-zinc-700 text-zinc-300 font-cairo font-bold text-base border border-zinc-700 transition-all duration-300 min-touch select-none"
+          >
+            <span>مش بحبك اصلااا 😜</span>
+          </button>
+
+        </div>
+
+        <p id="mini-game-response" class="text-sm md:text-base font-tajawal text-purple-300 font-semibold mt-6 min-h-[24px]">
+          <!-- Feedback message -->
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- SECTION: OUR 4 PERSONAS (SHEREEF + SEELA) -->
+    <section id="personas" class="py-20 px-4 max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <span class="text-xs uppercase font-jakarta tracking-widest text-purple-400 bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-purple-800/40">
+          The 4 Personas
+        </span>
+        <h2 class="text-3xl md:text-5xl font-black font-cairo text-white mt-4 mb-3">
+          شخصياتنا الأربعة (شريف وسلطانة النوم)
+        </h2>
+        <p class="text-sm md:text-base text-zinc-400 font-tajawal max-w-lg mx-auto">
+          شخصيات شريف التلاتة، بالإضافة لشخصية سيلا السرية الخاصة بهنا لما تفصل شحن في النوم!
+        </p>
+      </div>
+
+      <!-- 4 Personas Switcher Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Persona 1: Shereef -->
+        <div 
+          onclick="selectPersona('shereef')" 
+          class="persona-card glass-panel rounded-3xl p-6 cursor-pointer border border-white/5 hover:border-purple-500/50 transition-all text-center flex flex-col items-center group relative overflow-hidden"
+          id="card-persona-shereef"
+        >
+          <div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform">🤍</div>
+          <h3 class="text-xl font-bold font-cairo text-white mb-1">شريف الحنين</h3>
+          <span class="text-xs text-purple-300 font-tajawal mb-4 font-semibold">الأمان والسند والهدوء</span>
+          <p class="text-xs md:text-sm text-zinc-300 font-tajawal leading-relaxed">
+            "أنا السند والأمان اللي تتسندي عليه في أي وقت، ومستعد أسمعك بالساعات وأفضل جنبك وأطبطب عليكي في أصعب أوقاتك."
+          </p>
+          <div class="mt-6 w-full pt-4 border-t border-zinc-800">
+            <span class="text-xs font-bold font-tajawal text-purple-400">تفعيل شخصية شريف ✦</span>
+          </div>
+        </div>
+
+        <!-- Persona 2: Dark Shereef -->
+        <div 
+          onclick="selectPersona('dark')" 
+          class="persona-card glass-panel rounded-3xl p-6 cursor-pointer border border-white/5 hover:border-red-500/50 transition-all text-center flex flex-col items-center group relative overflow-hidden"
+          id="card-persona-dark"
+        >
+          <div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform">🖤</div>
+          <h3 class="text-xl font-bold font-cairo text-white mb-1">دارك شريف</h3>
+          <span class="text-xs text-red-400 font-tajawal mb-4 font-semibold">الحامي القوي والدرع</span>
+          <p class="text-xs md:text-sm text-zinc-300 font-tajawal leading-relaxed">
+            "أنا الحيطة السد والدرع اللي بيحميكي من العالم كله.. ومفيش قوة على الأرض تقدر تقرب منك أو تضايقك طول ما أنا عايش."
+          </p>
+          <div class="mt-6 w-full pt-4 border-t border-zinc-800">
+            <span class="text-xs font-bold font-tajawal text-red-400">تفعيل دارك شريف ✦</span>
+          </div>
+        </div>
+
+        <!-- Persona 3: Balbal -->
+        <div 
+          onclick="selectPersona('balbal')" 
+          class="persona-card glass-panel rounded-3xl p-6 cursor-pointer border border-white/5 hover:border-amber-500/50 transition-all text-center flex flex-col items-center group relative overflow-hidden"
+          id="card-persona-balbal"
+        >
+          <div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform">🧸</div>
+          <h3 class="text-xl font-bold font-cairo text-white mb-1">بلبل العبيط</h3>
+          <span class="text-xs text-amber-400 font-tajawal mb-4 font-semibold">الهزاز والنكش والضحك</span>
+          <p class="text-xs md:text-sm text-zinc-300 font-tajawal leading-relaxed">
+            "فين الشرابات الماتشينج وقعدة الرصيف؟ 😂 أنا اللي بيحب ينكشك ويغيظك ويضحك على هبلك العفوي طول اليوم!"
+          </p>
+          <div class="mt-6 w-full pt-4 border-t border-zinc-800">
+            <span class="text-xs font-bold font-tajawal text-amber-400">تفعيل بلبل ✦</span>
+          </div>
+        </div>
+
+        <!-- Persona 4: Seela (Hana's Sleepy Secret Persona) -->
+        <div 
+          onclick="selectPersona('seela')" 
+          class="persona-card glass-panel rounded-3xl p-6 cursor-pointer border border-white/5 hover:border-sky-400/50 transition-all text-center flex flex-col items-center group relative overflow-hidden"
+          id="card-persona-seela"
+        >
+          <div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform">😴🌙</div>
+          <h3 class="text-xl font-bold font-cairo text-white mb-1">سيلا (سلطانة النوم)</h3>
+          <span class="text-xs text-sky-400 font-tajawal mb-4 font-semibold">شخصية هنا لما تفصل شحن</span>
+          <p class="text-xs md:text-sm text-zinc-300 font-tajawal leading-relaxed">
+            "النسخة اللي بتبدأ تظهر لما تنامي وتفصلي وتهتري بكلام عشوائي وتنسي كل حاجة الصبح.. بس بتكون أحلى وألطف لحظات في يومي كله وإنتي تايهة في النوم ومش واعية لكلامك يا روحي 😴❤️"
+          </p>
+          <div class="mt-6 w-full pt-4 border-t border-zinc-800">
+            <span class="text-xs font-bold font-tajawal text-sky-400">تفعيل مود سيلا ✦</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SECTION: FUTURE DREAMS BUCKET LIST («أحلامنا الجاية») -->
+    <section id="bucket-list" class="py-20 px-4 max-w-4xl mx-auto">
+      <div class="glass-panel rounded-3xl p-6 md:p-10 border border-purple-500/20 shadow-purple-glow">
+        
+        <div class="flex items-center justify-between flex-wrap gap-4 mb-8">
+          <div>
+            <span class="text-xs uppercase font-jakarta tracking-widest text-purple-400 bg-purple-950/60 px-3 py-1 rounded-full">
+              Future Bucket List
+            </span>
+            <h2 class="text-2xl md:text-4xl font-black font-cairo text-white mt-3">
+              أحلام مستنيين نعيشها سوا
+            </h2>
+          </div>
+          <div id="bucket-progress-badge" class="px-4 py-2 rounded-2xl bg-purple-950/60 border border-purple-500/30 text-purple-300 font-tajawal text-xs font-bold">
+            جاري الحساب...
+          </div>
+        </div>
+
+        <!-- Checklist -->
+        <div id="bucket-items-container" class="space-y-4">
+          <!-- Bucket list checkboxes injected via JS -->
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SECTION: OUR PLACES («أماكننا») -->
+    <section id="places" class="py-20 px-4 max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="text-xs uppercase font-jakarta tracking-widest text-purple-400 bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-purple-800/40">
+          Story Map
+        </span>
+        <h2 class="text-3xl md:text-5xl font-black font-cairo text-white mt-4 mb-3">
+          أماكن جمعتنا
+        </h2>
+        <p class="text-sm md:text-base text-zinc-400 font-tajawal max-w-xl mx-auto">
+          حتى لو المسافات موجودة، في أماكن ارتبطت بكل ذكرى حلوة بيننا.
+        </p>
+      </div>
+
+      <!-- Places Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="glass-panel rounded-3xl p-6 border border-white/5 hover:border-purple-500/40 transition-all">
+          <div class="text-3xl mb-3">🤖</div>
+          <h3 class="text-lg font-bold font-cairo text-white mb-2">التلجرام، البوتات والعالم الرقمي</h3>
+          <p class="text-xs md:text-sm text-zinc-300 font-tajawal leading-relaxed">
+            مكان ما بدأت الحكاية في الشاتات وتبادل الإحالات وحكاوي البوتات اللي برمجناها، والنصب اللي اتنصب علينا سوا ومحدش فاهمني ولا مستحملني غيرك!
+          </p>
+        </div>
+
+        <div class="glass-panel rounded-3xl p-6 border border-white/5 hover:border-purple-500/40 transition-all">
+          <div class="text-3xl mb-3">💻</div>
+          <h3 class="text-lg font-bold font-cairo text-white mb-2">عالم الشير سكرين</h3>
+          <p class="text-xs md:text-sm text-zinc-300 font-tajawal leading-relaxed">
+            أحلى وأجمل لحظاتنا.. الطريقة اللي بتحسسنا إننا مع بعض وقاعدين في نفس الأوضة رغم كل المسافات، من فرجة على صور بعض لفرجة الكرتون والمسلسلات ونتخانق بالساعات مين يختار اللي هنشوفه ونفضل سهرانين للصبح سوا.
+          </p>
+        </div>
+
+        <div class="glass-panel rounded-3xl p-6 border border-purple-500/30 bg-purple-950/20 transition-all">
+          <div class="text-3xl mb-3">✨</div>
+          <h3 class="text-lg font-bold font-cairo text-white mb-2">مكان أول مقابلة (قريباً في الحقيقة)</h3>
+          <p class="text-xs md:text-sm text-zinc-300 font-tajawal leading-relaxed">
+            المكان اللي هنختاره عشان نقف فيه جنب بعض لأول مرة في الحقيقة ونلمس إيد بعض ونبدأ Chapter 02 سوا.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SECTION: TIME CAPSULE («صندوق المستقبل») -->
+    <section id="time-capsule" class="py-20 px-4 max-w-3xl mx-auto text-center">
+      <div class="glass-panel rounded-3xl p-8 md:p-12 border border-purple-500/30 shadow-purple-glow relative overflow-hidden">
+        
+        <div class="inline-flex p-4 rounded-3xl bg-purple-950/80 border border-purple-500/40 text-purple-300 text-3xl mb-4">
+          ⏳
+        </div>
+
+        <span class="text-xs uppercase font-jakarta tracking-widest text-purple-400 block mb-2 font-bold">
+          Future Time Capsule
+        </span>
+        <h2 class="text-2xl md:text-4xl font-black font-cairo text-white mb-3">
+          كبسولة الزمن (رسالة للمستقبل)
+        </h2>
+        <p class="text-xs md:text-sm text-zinc-300 font-tajawal max-w-md mx-auto mb-6">
+          الرسالة دي مقفولة ومش هتفتح غير في ميعادنا اللي جاي.. العداد بيعد بالثانية!
+        </p>
+
+        <!-- Countdown Display -->
+        <div class="grid grid-cols-4 gap-2 md:gap-4 max-w-md mx-auto mb-8 font-jakarta">
+          <div class="glass-pill p-3 rounded-2xl">
+            <span id="capsule-days" class="text-xl md:text-3xl font-black text-white block">00</span>
+            <span class="text-[10px] text-zinc-400 font-tajawal">يوم</span>
+          </div>
+          <div class="glass-pill p-3 rounded-2xl">
+            <span id="capsule-hours" class="text-xl md:text-3xl font-black text-white block">00</span>
+            <span class="text-[10px] text-zinc-400 font-tajawal">ساعة</span>
+          </div>
+          <div class="glass-pill p-3 rounded-2xl">
+            <span id="capsule-minutes" class="text-xl md:text-3xl font-black text-white block">00</span>
+            <span class="text-[10px] text-zinc-400 font-tajawal">دقيقة</span>
+          </div>
+          <div class="glass-pill p-3 rounded-2xl">
+            <span id="capsule-seconds" class="text-xl md:text-3xl font-black text-purple-400 block">00</span>
+            <span class="text-[10px] text-zinc-400 font-tajawal">ثانية</span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-3 mb-8">
+          <button 
+            type="button" 
+            id="capsule-open-btn" 
+            onclick="handleTimeCapsuleClick()" 
+            class="px-8 py-3.5 rounded-full bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-tajawal text-sm font-bold border border-zinc-700 transition-all min-touch flex items-center justify-center gap-2"
+          >
+            <i class="fa-solid fa-lock text-xs mr-1"></i>
+            <span>مقفولة... لسه بدري 👀</span>
+          </button>
+        </div>
+
+        <!-- Interactive Capsule Note/Wish Seal Feature -->
+        <div id="capsule-interactive-box" class="pt-6 border-t border-purple-500/20 text-right">
+          <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
+            <h4 class="text-sm md:text-base font-bold font-cairo text-white flex items-center gap-2">
+              <i class="fa-solid fa-envelope-open-text text-purple-400"></i>
+              <span>سيبي أمنيتك أو رسالتك للكبسولة 💌</span>
+            </h4>
+            <span class="text-[11px] text-purple-300 font-tajawal bg-purple-950/60 px-2.5 py-0.5 rounded-full border border-purple-500/20">تتختم بالشمع الأحمر</span>
+          </div>
+
+          <div id="capsule-input-container" class="space-y-3">
+            <textarea 
+              id="capsule-user-wish" 
+              rows="3" 
+              placeholder="اكتبي هنا رسالتك أو أمنيتك للكبسولة... هتتقفل برقم سري وتتفتح في ميعادنا اللي جاي ❤️"
+              class="w-full px-4 py-3 rounded-2xl bg-black/50 border border-purple-500/30 text-white placeholder-zinc-500 focus:outline-none focus:border-purple-400 font-tajawal text-xs md:text-sm resize-none"
+            ></textarea>
+            <button 
+              type="button" 
+              onclick="saveCapsuleWish()" 
+              class="w-full py-3.5 rounded-xl bg-gradient-to-r from-purple-700 via-pink-700 to-purple-700 hover:from-purple-600 hover:to-pink-600 text-white font-tajawal font-bold text-xs md:text-sm shadow-purple-glow transition-all flex items-center justify-center gap-2 min-touch"
+            >
+              <i class="fa-solid fa-stamp text-xs"></i>
+              <span>اقفلي على أمنيتك بالشمع الأحمر 🔒✨</span>
+            </button>
+          </div>
+
+          <div id="capsule-saved-container" class="hidden p-5 rounded-2xl bg-purple-950/50 border border-purple-500/40 text-center space-y-3 shadow-inner">
+            <div class="text-3xl">💌🔒</div>
+            <p class="text-sm font-bold font-cairo text-purple-200">
+              تم حفظ أمنيتك السرية وختمها بالشمع الأحمر داخل الكبسولة!
+            </p>
+            <p id="capsule-saved-preview" class="text-xs text-zinc-300 font-tajawal italic line-clamp-2 px-4"></p>
+            <div class="flex items-center justify-center gap-4 pt-2">
+              <button type="button" onclick="readCapsuleWish()" class="px-4 py-1.5 rounded-lg bg-purple-900/60 hover:bg-purple-800 text-xs text-purple-200 font-tajawal font-bold transition-all min-touch">
+                <i class="fa-regular fa-eye mr-1"></i> قراءة رسالتك
+              </button>
+              <button type="button" onclick="editCapsuleWish()" class="px-4 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-xs text-zinc-300 font-tajawal transition-all min-touch">
+                <i class="fa-solid fa-pen text-[10px] mr-1"></i> تعديل الرسالة
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SECTION: THE MISSING MEMORIES («الذكريات الناقصة») -->
+    <section id="missing-memories" class="py-20 px-4 max-w-4xl mx-auto">
+      <div class="glass-panel rounded-3xl p-6 md:p-10 border border-white/5">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-purple-400">
+            <i class="fa-regular fa-bookmark"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold font-cairo text-white">الذكريات الناقصة اللي مستنية تتكتب</h3>
+            <p class="text-xs text-zinc-400 font-tajawal">لأن الحكاية لسه عايشة وكل يوم بنفتكر وبنعيش تفاصيل جديدة</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs md:text-sm font-tajawal">
+          <div class="p-4 rounded-2xl bg-black/40 border border-white/5 flex items-center gap-3">
+            <span class="text-purple-400 font-bold">✦</span>
+            <span class="text-zinc-300">التاريخ ده لسه بنحاول نفتكر كان يوم إيه بالظبط</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-black/40 border border-white/5 flex items-center gap-3">
+            <span class="text-purple-400 font-bold">✦</span>
+            <span class="text-zinc-300">الصورة الحقيقية الأولى اللي هنقف فيها جنب بعض</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-black/40 border border-white/5 flex items-center gap-3">
+            <span class="text-purple-400 font-bold">✦</span>
+            <span class="text-zinc-300">الحكاية دي فاكرين نصها ومستنيين نفتكر باقي كلامنا</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-black/40 border border-white/5 flex items-center gap-3">
+            <span class="text-purple-400 font-bold">✦</span>
+            <span class="text-zinc-300">لسه محتاجين نكتب اللي هيحصل في أيامنا الجاية سوا</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION: THE GRAND CINEMATIC CLIMAX (FINALE) -->
+    <section id="finale" class="relative py-32 px-4 bg-black flex flex-col items-center justify-center text-center overflow-hidden">
+      <div class="max-w-2xl mx-auto space-y-8 relative z-10">
+        
+        <div class="space-y-6 text-base md:text-2xl font-tajawal text-zinc-400 leading-relaxed font-light">
+          <p class="finale-reveal-node opacity-80">فاكرة أول يوم؟</p>
+          <p class="finale-reveal-node opacity-80">فاكرة قد إيه حاجات ومواقف وزعل وفرح حصلوا من ساعتها؟</p>
+          <p class="finale-reveal-node opacity-80">فاكرة كل الذكريات دي؟</p>
+          <p class="text-xl md:text-3xl text-purple-300 font-medium pt-2">إحنا لسه في النص.</p>
+          <p class="text-2xl md:text-4xl text-white font-bold font-cairo">الحكاية لسه مخلصتش.</p>
+        </div>
+
+        <div class="pt-8">
+          <span class="text-xs uppercase font-jakarta tracking-widest text-purple-400 block mb-2 font-bold">
+            Milestone Complete
+          </span>
+          <h1 class="text-4xl md:text-6xl font-black font-jakarta tracking-tight text-white mb-3">
+            CHAPTER 01 — COMPLETE
+          </h1>
+          <p class="text-xl md:text-2xl font-tajawal text-pink-300 font-bold mb-10">
+            مستنيين نكتب Chapter 02 سوا ❤️
+          </p>
+
+          <!-- Loop Back Button -->
+          <a 
+            href="#hero" 
+            class="px-8 py-4 rounded-full bg-gradient-to-r from-purple-700 via-indigo-600 to-purple-800 hover:from-purple-600 hover:to-indigo-500 text-white font-cairo font-bold text-base shadow-purple-glow hover:shadow-purple-glow-lg transition-all inline-flex items-center gap-3 min-touch"
+          >
+            <i class="fa-solid fa-arrow-up text-sm"></i>
+            <span>نرجع لأول الحكاية</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER WITH HIDDEN EASTER EGG -->
+    <footer class="py-12 px-4 border-t border-zinc-900 text-center text-xs text-zinc-500 font-tajawal relative">
+      <div class="max-w-md mx-auto space-y-3">
+        <p>صُنع بكل ذرة حب من شريف مخصوص لهنا (LITTLE DARK) 💜</p>
+        <p class="font-jakarta text-[11px] text-zinc-600">All memories, stories, and emotions are 100% real.</p>
+        
+        <!-- Secret Easter Egg Trigger Symbol (Click 7 times) -->
+        <div class="pt-3">
+          <button 
+            type="button" 
+            id="easter-egg-btn" 
+            onclick="handleSecretEasterEggClick()" 
+            class="text-zinc-700 hover:text-purple-400 transition-colors p-2 text-sm"
+            title="✦"
+          >
+            ✦
+          </button>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+
+  <!-- ========================================== -->
+  <!-- FLOATING HAMBURGER & CINEMATIC DRAWER      -->
+  <!-- ========================================== -->
+  
+  <!-- Floating Hamburger Button (Bottom Right) -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <button 
+      type="button" 
+      id="drawer-toggle-btn" 
+      onclick="toggleDrawer()" 
+      class="w-14 h-14 rounded-full bg-purple-700 hover:bg-purple-600 text-white shadow-purple-glow hover:shadow-purple-glow-lg flex items-center justify-center text-xl transition-all transform hover:scale-105 active:scale-95 min-touch"
+      title="القائمة الكاملة"
+    >
+      <i id="drawer-toggle-icon" class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Fullscreen Cinematic Drawer Menu -->
+  <div id="drawer-menu" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-2xl transition-all duration-500 opacity-0 pointer-events-none flex flex-col justify-between p-6 md:p-12 overflow-y-auto">
+    
+    <!-- Top Bar -->
+    <div class="flex items-center justify-between border-b border-zinc-800/80 pb-6">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-2xl bg-purple-900/60 border border-purple-500/30 flex items-center justify-center text-purple-300 font-bold">
+          ح
+        </div>
+        <div>
+          <h3 class="text-xl font-bold font-cairo text-white">فهرس الحكاية</h3>
+          <p class="text-xs text-zinc-400 font-tajawal">اختاري المحطة اللي تحبي تروحيها</p>
+        </div>
+      </div>
+      <button 
+        type="button" 
+        onclick="toggleDrawer()" 
+        class="w-11 h-11 rounded-full bg-zinc-900 border border-zinc-700 text-zinc-300 hover:text-white flex items-center justify-center min-touch"
+      >
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+
+    <!-- Quick Emotional Actions (Inside Drawer) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
+      <button 
+        type="button" 
+        onclick="triggerRandomMemory(); toggleDrawer();" 
+        class="glass-panel p-4 rounded-2xl flex items-center gap-3 text-right hover:border-purple-400 transition-all min-touch"
+      >
+        <span class="text-2xl">🎲</span>
+        <div>
+          <span class="block text-sm font-bold font-cairo text-white">فاجئيني بذكرى</span>
+          <span class="text-xs text-zinc-400 font-tajawal">هختارلك ذكرى عشوائية ونروح عندها</span>
+        </div>
+      </button>
+
+      <button 
+        type="button" 
+        onclick="triggerMissYouShortcut(); toggleDrawer();" 
+        class="glass-panel p-4 rounded-2xl flex items-center gap-3 text-right hover:border-pink-500/40 transition-all min-touch"
+      >
+        <span class="text-2xl">🥺</span>
+        <div>
+          <span class="block text-sm font-bold font-cairo text-pink-300">وحشتيني</span>
+          <span class="text-xs text-zinc-400 font-tajawal">رسالة سريعة من قلبي لقلبك</span>
+        </div>
+      </button>
+    </div>
+
+    <!-- Drawer Navigation Links -->
+    <nav class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 text-sm font-tajawal">
+      <a href="#hero" onclick="toggleDrawer()" class="p-3 rounded-xl hover:bg-purple-950/40 text-zinc-300 hover:text-white transition-all">الرئيسية</a>
+      <a href="#story-intro" onclick="toggleDrawer()" class="p-3 rounded-xl hover:bg-purple-950/40 text-zinc-300 hover:text-white transition-all">قبل ما نفهم</a>
+      <a href="#chapters" onclick="toggleDrawer()" class="p-3 rounded-xl hover:bg-purple-950/40 text-zinc-300 hover:text-white transition-all">فصول الرواية</a>
+      <a href="#vault" onclick="toggleDrawer()" class="p-3 rounded-xl hover:bg-purple-950/40 text-zinc-300 hover:text-white transition-all">ذكرياتنا (Vault)</a>
+      <a href="#polaroids" onclick="toggleDrawer()" class="p-3 rounded-xl hover:bg-purple-950/40 text-zinc-300 hover:text-white transition-all">لو كنا صورناها</a>
+      <a href="#chat-archive" onclick="toggleDrawer()" class="p-3 rounded-xl hover:bg-purple-950/40 text-zinc-300 hover:text-white transition-all">شاتنا الحقيقي</a>
+      <a href="#reasons-jar" onclick="toggleDrawer()" class="p-3 rounded-xl hover:bg-purple-950/40 text-zinc-300 hover:text-white transition-all">برطمان الـ 50 سبب</a>
+      <a href="#envelopes" onclick="toggleDrawer()" class="p-3 rounded-xl hover:bg-purple-950/40 text-zinc-300 hover:text-white transition-all">رسائل افتحي لما</a>
+      <a href="#quiz" onclick="toggleDrawer()" class="p-3 rounded-xl hover:bg-purple-950/40 text-zinc-300 hover:text-white transition-all">فاكرة ولا لأ؟</a>
+      <a href="#mini-game" onclick="toggleDrawer()" class="p-3 rounded-xl hover:bg-purple-950/40 text-zinc-300 hover:text-white transition-all">بتحبيني قد إيه؟</a>
+      <a href="#personas" onclick="toggleDrawer()" class="p-3 rounded-xl hover:bg-purple-950/40 text-zinc-300 hover:text-white transition-all">شخصيات شريف</a>
+      <a href="#bucket-list" onclick="toggleDrawer()" class="p-3 rounded-xl hover:bg-purple-950/40 text-zinc-300 hover:text-white transition-all">أحلامنا الجاية</a>
+      <a href="#places" onclick="toggleDrawer()" class="p-3 rounded-xl hover:bg-purple-950/40 text-zinc-300 hover:text-white transition-all">أماكننا</a>
+      <a href="#time-capsule" onclick="toggleDrawer()" class="p-3 rounded-xl hover:bg-purple-950/40 text-zinc-300 hover:text-white transition-all">كبسولة الزمن</a>
+      <a href="#missing-memories" onclick="toggleDrawer()" class="p-3 rounded-xl hover:bg-purple-950/40 text-zinc-300 hover:text-white transition-all">الذكريات الناقصة</a>
+      <a href="#finale" onclick="toggleDrawer()" class="p-3 rounded-xl hover:bg-purple-950/40 text-zinc-300 hover:text-white transition-all">نهاية Chapter 01</a>
+    </nav>
+
+    <!-- Drawer Footer -->
+    <div class="pt-6 border-t border-zinc-800/80 text-xs text-zinc-500 font-tajawal flex items-center justify-between">
+      <span>«من أول كلام... لحد دلوقتي.»</span>
+      <button type="button" onclick="shareWebsiteLink()" class="text-purple-400 hover:text-purple-300 flex items-center gap-1.5 min-touch">
+        <i class="fa-solid fa-share-nodes"></i>
+        <span>مشاركة الرابط</span>
+      </button>
+    </div>
+
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- MODALS SYSTEM (MEMORIES, LETTERS, SECRETS) -->
+  <!-- ========================================== -->
+
+  <!-- Generic Modal Backdrop & Frame -->
+  <div id="app-modal" class="fixed inset-0 z-[120] bg-black/80 backdrop-blur-xl flex items-center justify-center p-4 transition-all duration-300 opacity-0 pointer-events-none">
+    <div id="modal-card" class="glass-panel w-full max-w-2xl max-h-[90vh] rounded-3xl p-6 md:p-8 overflow-y-auto border border-purple-500/30 shadow-purple-glow transform scale-95 transition-transform duration-300">
+      
+      <!-- Modal Close Button -->
+      <div class="flex items-center justify-between pb-4 border-b border-zinc-800 mb-6">
+        <span id="modal-tag-badge" class="text-xs font-bold font-tajawal text-purple-400 bg-purple-950/60 px-3 py-1 rounded-full border border-purple-500/20">
+          تفاصيل الذكرى
+        </span>
+        <button type="button" onclick="closeModal()" class="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-700 text-zinc-400 hover:text-white flex items-center justify-center min-touch">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Modal Injected Content -->
+      <div id="modal-body-content" class="space-y-4">
+        <!-- Content injected dynamically -->
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ================================================================= -->
+  <!-- JAVASCRIPT ENGINE & ARCHITECTURE                                  -->
+  <!-- ================================================================= -->
+  <script>
+    /**
+     * =================================================================
+     * 1. OWNER-FRIENDLY CENTRAL DATA VAULT (CONFIG)
+     * =================================================================
+     * The owner is NOT a programmer. Everything that defines the relationship
+     * is clearly configured here.
+     */
+    const CONFIG = {
+      siteName: "حكايتنا",
+      tagline: "من أول كلام... لحد دلوقتي.",
+      hisName: "شريف",
+      herName: "هنا",
+      hisNameEn: "SHARIF",
+      herNameEn: "HANA",
+      nickname: "HANONTY",
+      littleDarkName: "LITTLE DARK",
+      
+      // Acceptable passwords (case-insensitive)
+      passwords: [
+        "ليتل دارك", "little dark", "2409", "هنا", "littledark",
+        "المانجا", "مانجا", "المانجو", "مانجو", "mango",
+        "كلمة المرور", "كلمه المرور"
+      ],
+      
+      dates: {
+        journeyStart: new Date("2024-06-10T00:00:00"), // أول يوم جيت الدنيا لما عرفتك
+        hanaBirth: new Date("2009-07-31T00:00:00"),     // أول يوم جيتي الدنيا
+        sharifBirth: new Date("2002-10-01T00:00:00"),   // أول يوم اتولدت عادي
+        togetherMilestoneDays: 842,                     // Relationship milestone anchor
+        nextAnniversary: new Date("2025-06-10T00:00:00") // Time Capsule target
+      },
+      
+      music: {
+        enabled: false, // Optional & disabled by default; native Web Audio API synth provides soothing ambient pad
+        title: "صوت الحكاية",
+        src: "music.mp3"
+      },
+      
+      media: {
+        images: { enabled: false }, // Zero dependencies on missing external images
+      },
+
+      // 6 Core Confirmed Real Memories
+      memories: [
+        {
+          id: "vault-card-1",
+          title: "يوم سارة والجروب",
+          period: "أول ما اتعرفنا",
+          tag: "فترة الاستعباط 😂",
+          shortDescription: "حكاوي ثانوي وكلام عشوائي موت، وكنت مبسوطة من أول اليوم لآخره.",
+          story: "اليوم بتاع سارة ده كان في أول ما اتعرفنا.. عملت جروب وقعدت تحكي عن صحابك بتوع ثانوي وكلام عشوائي موت، وكنت مبسوطة من أول اليوم لآخره رغم إنه كان عادي ومفيهوش مناسبة كبيرة، بس كان أول إحساس إن وجودك بيفرق في اليوم كله.",
+          hisPerspective: "كنت بتلكك عشان أفتح كلام وأفضل اتكلم معاكي، ومكنتش عايز اليوم يخلص.",
+          herPerspective: "كنت حاسة بفرحة غريبة من غير سبب واضح غير إنك موجود في الشات.",
+          status: "confirmed",
+          artisticRecreation: false
+        },
+        {
+          id: "vault-card-2",
+          title: "رصيف المدرسة والشتا",
+          period: "شتا أولى ثانوي",
+          tag: "شتا وماتش شرابات ❄️",
+          shortDescription: "الموبايل مسحوب وبره المدرسة ومطرودين أنا وأبرار، قالعة الكوتشي وعاملين ماتش في الشرابات.",
+          story: "الموبايل مسحوب وبره المدرسة ومطرودين أنا وأبرار، قالعة الكوتشي وعاملين ماتش في الشرابات وقاعدة على الأرض وبكلمك وبتحكيلي عن البوتات.. اللحظة دي حقيقية موت ومستحيل تتنسي.",
+          hisPerspective: "كنت هموت وأطمن عليكي وانتي قاعدة في السقعة كده، بس ضحكت من قلبي لما وصفتيلي ماتش الشرابات.",
+          herPerspective: "كنت سقعانة بس قلبي كان دافي عشان كنت بكلمك.",
+          status: "confirmed",
+          artisticRecreation: true // Displays compulsory badge
+        },
+        {
+          id: "vault-card-3",
+          title: "فيديو أولى ثانوي",
+          period: "سنة أولى ثانوي",
+          tag: "بدون أي سبب ❤️",
+          shortDescription: "روحت المدرسة لوحدي، بعتلك فيديو وأنا قاعدة بعدل الطرحة.. كنت حباك أوي.",
+          story: "روحت المدرسة لوحدي وكنت لسه في أولى، بعتلك فيديو وأنا قاعدة بعدل الطرحة.. معرفش ليه بس اليوم ده بالذات كنت حباك أوي وبدون أي مبرر، كانت لحظة صفاء وحب طالعة من قلبي ليكي.",
+          hisPerspective: "الفيديو ده كان ومازال من ألطف وأجمل الحاجات اللي شوفتها في حياتي، وشك وانتي بتعدلي الطرحة محفور في دماغي.",
+          herPerspective: "معرفش ليه.. بس اليوم ده حسيت إني عايزاكي تشوفي يومي وتفاصيلي الصغيرة.",
+          status: "confirmed",
+          artisticRecreation: true
+        },
+        {
+          id: "vault-card-4",
+          title: "الشير سكرين وأحلى الأيام",
+          period: "فترة الهدوء",
+          tag: "راحة وهدوء 📱",
+          shortDescription: "الفترة اللي مكناش بنتخانق فيها نهائي، وبنتكلم كتير جداً بالساعات.",
+          story: "الفترة اللي مكناش بنتخانق فيها نهائي، وبنتكلم كتير جداً بالساعات.. والشير سكرين اللي كان أحلى حاجة في حياتي. كنا بنفضل فاتحين الشاشة حتى وإحنا ساكتين، مجرد الإحساس بوجودك كان كفاية.",
+          hisPerspective: "كنت بحس إننا عايشين في بيت واحد حتى والمسافة بيننا.. الشير سكرين كان جنتنا الصغيرة.",
+          herPerspective: "كنت بنام وأصحى والشات مفتوح، ومكنتش بحس بأي وحدة طول ما انتي هناك.",
+          status: "confirmed",
+          artisticRecreation: true
+        },
+        {
+          id: "vault-card-5",
+          title: "سند الأيام الصعبة (تيتا)",
+          period: "الأيام التقيلة",
+          tag: "أمان وطمأنينة 🕊️",
+          shortDescription: "لما الدنيا كانت تقيلة ومفيش حد جنبي.. كنت مستحملني وبتسمع صياحي كل نص ساعة.",
+          story: "لما بعدت عن أغلب صحابي والدنيا كانت تقيلة في أيام وفاة تيتا.. كنت مستحملني وبتسمع صياحي كل نص ساعة وواقف جنبي بجد. في عز ما كنت منهارة ومش طايقة كلمة من حد، كنت الوحيد اللي بقدر أسمعه وأرتاح في حضن كلامه.",
+          hisPerspective: "كنت حاسس بوجعك ومكنش فارق معايا أي حاجة غير إني أكون جنبك وأشيل عنك لو أقدر.",
+          herPerspective: "اليوم ده عرفت إنك مش بس حبيبي.. إنت سندي اللي بتسند عليه لما الدنيا تهدني.",
+          status: "confirmed",
+          artisticRecreation: false
+        },
+        {
+          id: "vault-card-6",
+          title: "راحة ما بعد الخناق",
+          period: "كل خناقة وتصافي",
+          tag: "سحر التصافي 🩹",
+          shortDescription: "لما نتكلم ونتصافى بعد كل خناقة.. يالهوي على راحة البال اللي ببقى فيها طول اليوم.",
+          story: "لما نتكلم ونتصافى بعد كل خناقة.. يالهوي على راحة البال اللي ببقى فيها طول اليوم! الزعل بيكون تقيل على النفس بس اللحظة اللي بنرجع فيها نضحك ونقول 'حقك عليا' بتغسل كل التعب اللي فات وتثبت إن حبنا أقوى من أي زعل.",
+          hisPerspective: "أنا بموت في كل ثانية بنتخانق فيها عشان ببقى مستني لحظة الصفا اللي بعدها.",
+          herPerspective: "الراحة اللي بتيجي بعد ما نتصافى بتخليني أنسى إحنا كنا متخانقين على إيه أصلاً.",
+          status: "confirmed",
+          artisticRecreation: false
+        }
+      ],
+
+      // Complete 50 Reasons (All fully written in authentic Egyptian Arabic)
+      reasons: [
+        "عشان ضحكتك بتنسيني كل تعب اليوم في ثانية واحدة.",
+        "عشان اليوم اللي بنتخانق فيه وبنتصالح بعدها بيبقى أحلى يوم في الأسبوع.",
+        "عشان بتستحملي نكشي وهزاري الرخم ومبتزهقيش.",
+        "عشان قعدة رصيف المدرسة وماتش الشرابات مع أبرار مبيعملهاش غيرك.",
+        "عشان لما بتبعتيلي فيديو وانتي بتعدلي الطرحة بتبقي قمر من غير أي مجهود.",
+        "عشان لما كنت بسمع صياحك كل نص ساعة أيام تيتا، كنت بحس إنك حتة مني ومسؤوليتي.",
+        "عشان الشير سكرين اللي كنا بنقعد عليه بالساعات مكنتش بزهق منه ثانية واحدة.",
+        "عشان صوتك أول ما بتصحي من النوم بيبقى ألطف وأحن حاجة في المجرة.",
+        "عشان لما بتتقمصي بتبقي شبه الأطفال بالظبط ونفسي أكلك.",
+        "عشان الحكاية بدأت صدفة في ظروف عجيبة بس طلعت أحلى صدفة في عمري كله.",
+        "عشان انتي ليتل دوك بتاعتي اللي مفيش زيها اتنين في الدنيا دي.",
+        "عشان بتفهميني من غير ما أتكلم كتير وبنظرة واحدة.",
+        "عشان لما بكون مضغوط من الدنيا، مجرد مسج منك بتغير مودي تماماً.",
+        "عشان طريقتك وانتي بتحكي المواقف العشوائية بتفطسني من الضحك.",
+        "عشان رغم إننا مشوفناش بعض في الحقيقة لسه، بس إنتي أقرب حد لقلبي في الكون.",
+        "عشان السنتين اللي بنخطط فيهم لمقابلتنا هيخلوا أول لحظة أشوفك فيها تاريخية ومحفورة في القلب.",
+        "عشان انتي الحاجة الوحيدة الصح في حياتي كلها وسط كل الغلط.",
+        "عشان بتعرفي تسيطري على جناني وعصبيتي بكلمة واحدة حنينة منك.",
+        "عشان بتثقي فيا وبتشاركيني أدق تفاصيل يومك اللي محدش غيري يعرفها.",
+        "عشان لما بتتصالحي بترجعي أحن وأطيب واحدة في الدنيا.",
+        "عشان حكايات ثانوي ويوم سارة اللي فضلتي فاكراه بكل تفاصيله الحلوة.",
+        "عشان ضحكتك في المكالمات بتخليني أبتسم زي العبيط للشاشة من غير ما أحس.",
+        "عشان روحك حلوة ومبتعرفيش تشيلي في قلبك أي غل من حد.",
+        "عشان بتهتمي بيا وبتحسسيني إني مهم عندك بجد ومتقدر.",
+        "عشان بتستحملي شخصيات شريف التلاتة ومبتزهقيش من ولا واحدة فيهم.",
+        "عشان لما بقولك بحبك بتردي عليا بطريقة تخلي قلبي يدق بجد كأني لسه عارفك إمبارح.",
+        "عشان لما بتغيبي شوية بحس إن اليوم ملوش أي معنى ولا طعم من غيرك.",
+        "عشان تفاصيلك الصغيرة وعاداتك اللي محدش يعرفها غيري.",
+        "عشان طريقتك وانتي بتطمني عليا لما أكون تعبان أو مضايق.",
+        "عشان كل ما أفتكر إنك معايا بطمن لمستقبلي وبحس إن كل حاجة هتبقى تمام.",
+        "عشان ذكرياتنا الأونلاين أصدق وأنقى من ألف خروجة عادية وتقليدية.",
+        "عشان انتي الوحيدة اللي في دماغي حتى وسط زحمة الناس ودوشة الدنيا.",
+        "عشان بتفرحي من أقل حاجة بعملها عشانك وبتبيني تقديرك.",
+        "عشان عنادك ساعات بيبقى مستفز وساعات تانية بيبقى ألطف حاجة فيكي.",
+        "عشان لما بتنامي وبتسيبيلي رسائل، بصحى عليها مبسوط ومبتسم.",
+        "عشان السند اللي حسيته معاكي لما الدنيا كانت مقفلة في وشي من كل حتة.",
+        "عشان انتي صاحبتي وحبيبتي وبنتي وكل دنيتي في نفس الوقت.",
+        "عشان نظرتك للحياة وطيبتك الزيادة اللي بحاول دايماً أحميكي منها.",
+        "عشان لما بتكوني واثقة فيا بتديني طاقة أهد جبال وأعافر.",
+        "عشان عيشتي معايا أصعب أوقاتي وعمرك ما اتغيرتي عليا.",
+        "عشان الصبر اللي بيننا اللي هيخلي نهايتنا حلوة غصب عن أي ظروف وأي مسافات.",
+        "عشان خططي معاكي للمستقبل هي الحاجة الوحيدة اللي مصبراني على مرار الأيام.",
+        "عشان بتعرفي تضحكيني حتى لو أنا في قمة زعلي ونكدي.",
+        "عشان شاتنا القديم كنز بالنسبة لي ومستحيل أفرط في سكرين واحدة منه.",
+        "عشان انتي الدفا والأمان بتاعي في عالم بارد.",
+        "عشان لما بفتكر أول يوم اتكلمنا فيه بقول ألف حمد وشكر لربنا إنه حطك في طريقي.",
+        "عشان لسه مكملين مع بعض رغم كل المسافات والخناقات وظروف الدنيا.",
+        "عشان شكلك وانتي بتفكري وتبعتيلي فويس نوتس طويلة عشوائية.",
+        "عشان أنا ببقى على طبيعتي معاكي ومبحتاجش أتصنع أي حاجة قدامك.",
+        "عشان انتي هنا.. ومفيش في قلبي ولا هيكون فيه أي حد غيرك أبدًا لحد آخر يوم في عمري."
+      ],
+
+      // Complete 8 Envelopes («افتحي لما...»)
+      envelopes: [
+        {
+          id: "env-1",
+          icon: "💜",
+          title: "افتحي لما أوحشك",
+          tag: "شوق وحنين",
+          content: `<p>لو فتحتي الجواب ده، فغالبًا وحشتك الحكاية شوية.</p>
+<p>يمكن وحشتك مكالماتنا، كلامنا اللي ملوش آخر، الهزار اللي بيبدأ بحاجة ملهاش لازمة ونلاقي نفسنا بنتكلم بالساعات، أو حتى مجرد إحساس إن في حد موجود تقدري تروحي تكلميه في أي وقت.</p>
+<p>بس عارفة إيه؟ أنا كمان بتوحشيني.</p>
+<p>وبتوحشيني بطريقة غريبة شوية، مش لازم يحصل موقف كبير عشان أوحشك.. ساعات حاجة صغيرة جدًا تفكرني بيكي، كلمة، موقف، وقت معين، أو حتى حاجة ملهاش علاقة بأي حاجة.</p>
+<p>وأفتكر قد إيه حاجات كتير بينا بدأت ببساطة جدًا.. مجرد كلام.. وبعدين الكلام بقى عادة.. والعادة بقت جزء من يومي.. والجزء ده بقى إنتي.</p>
+<p class="text-lg md:text-xl font-bold font-cairo text-purple-300 py-1 text-center">فلو إنتي دلوقتي وحشاني... تعالي هنا 🫂</p>
+<p>اعتبري الجواب ده حضن صغير مني لحد ما نتكلم.. ومتنسيش: إحنا لسه عندنا كلام كتير أوي مخلصناهوش. ❤️</p>`
+        },
+        {
+          id: "env-2",
+          icon: "🥺",
+          title: "افتحي لما نكون زعلانين",
+          tag: "تصافي ومحبة",
+          content: `<p>طيب.. أول حاجة قبل أي كلام:</p>
+<p class="font-bold text-purple-300 text-base md:text-lg">ماتخليش الخناقة تنسيكي إحنا مين.</p>
+<p>إحنا ممكن نزعل.. ممكن نفهم بعض غلط.. ممكن كلمة تضايق.. ممكن كل واحد فينا يبقى شايف الموضوع من ناحية مختلفة.</p>
+<p>بس وسط كل ده، أنا مش عايزك تنسي إن الشخص اللي قدامك هو نفس الشخص اللي ضحك معاكي في أوقات ملهاش لازمة، وقعد يسمعك، وحفظ تفاصيل صغيرة عنك، وعاش معاكي أيام حلوة وأيام مش أحسن حاجة.</p>
+<p>الخلاف مش بيمسح كل ده.. وأنا مش بكتبلك الجواب ده عشان أثبت إني صح، بالعكس.. لو أنا غلطان، فأنا عايز أعرف إزاي غلطت.. ولو إنتي زعلانة، مش أهم حاجة عندي إني أخلص الخناقة.. أهم حاجة إنك ماتفضليش شايلة حاجة جواكي.</p>
+<p>فممكن نهدا شوية... وبعدين نتكلم.. من غير عناد.. من غير «خلاص براحتك».. ومن غير ما كل واحد يستنى التاني يبدأ.</p>
+<p class="font-bold text-lavender">أنا مش عايز أكسب خناقة على حسابنا.. أنا عايز نخلص منها وإحنا لسه إحنا.</p>
+<p class="text-base md:text-lg font-bold font-cairo text-pink-300 text-center pt-2">تعالي نصالح بعض بقى.. وحشتني حتى وإنتي زعلانة مني. 🤍</p>`
+        },
+        {
+          id: "env-3",
+          icon: "🌧️",
+          title: "افتحي لما الدنيا تتقل",
+          tag: "طبطبة وأمان",
+          content: `<p>لو الدنيا تقيلة عليكي دلوقتي... مفيش كلام سحري هقولهولك يخلي كل حاجة تختفي.. ومش هقولك «ماتزعليش» كأن الموضوع سهل.</p>
+<p>زعلي.. اتعبي.. خدي وقتك.. مش لازم تبقي كويسة طول الوقت.. ومش لازم تشرحيلي كل حاجة عشان أكون جنبك.</p>
+<p>لو عايزة تتكلمي، أنا أسمعك.. لو عايزة تحكي نفس الموضوع عشر مرات، احكيه.. لو مش عايزة تتكلمي خالص، عادي.. وجودي مش مشروط إنك تكوني في أحسن حالاتك.. أنا مش مستني النسخة اللي بتضحك وتهزر بس.. أنا عايز أبقى موجود كمان في الأيام اللي مش عارفة تعملي فيها أي حاجة.</p>
+
+<div class="my-5 p-5 md:p-6 rounded-2xl bg-gradient-to-r from-purple-950/90 via-pink-950/80 to-purple-950/90 border-2 border-pink-500/70 shadow-[0_0_35px_rgba(236,72,153,0.4)] text-center">
+  <span class="text-xs uppercase tracking-widest text-pink-400 font-bold block mb-2 font-jakarta">وعد محفوظ في قلبي للأبد ✦</span>
+  <p class="text-base md:text-xl font-black font-cairo text-transparent bg-clip-text bg-gradient-to-r from-pink-200 via-white to-purple-200 leading-loose">
+    وعايزك تفتكري دايماً يا حبيبة قلبي..<br/>
+    مهما الدنيا ضاقت بيكي وحسيتي إنك لوحدك ومحدش بيحبك..<br/>
+    فا افتكري دايماً إني حبيتك وبحبك وهحبك وهفضل سندك وضهرك..<br/>
+    وهفضل بيتك الآمن وحضنك الدافي وموجود عشانك في أي وقت وكل وقت. ❤️
+  </p>
+</div>
+
+<p>فخدي نفس.. واحدة واحدة.. مش لازم تحلي حياتك كلها النهارده.. نعدي النهارده بس.. وبعدين نشوف بكرة.</p>
+<p>ولو حسيتي إنك لوحدك... افتكري إن في حد هنا.. حتى لو المسافة بعيدة.. حتى لو مفيش كلام كتير يتقال.</p>
+<p class="text-base font-bold font-cairo text-pink-300 text-center pt-2">أنا هنا.. وإنتي مش مضطرة تشيلي كل حاجة لوحدك. 🫂</p>`
+        },
+        {
+          id: "env-4",
+          icon: "😂",
+          title: "افتحي لما تحبي تبتسمي",
+          tag: "ضحك وهزار",
+          content: `<p>بصي.. أنا مش ضامن إن الجواب ده هيخليكي تضحكي.. بس على الأقل هحاول، عشان أنا أصلًا عندي تاريخ محترم جدًا في الاستعباط 😂</p>
+<p>فاكرة أيام الكلام العشوائي؟ اللي ممكن ندخل نتكلم في حاجة ونخرج بعد وقت طويل وإحنا مش فاكرين أصلًا كنا بنتكلم في إيه؟</p>
+<p>وفاكرة الشير سكرين والبوتات وتبادل الإحالات والنصب علينا؟ 😂</p>
+<p class="font-bold text-purple-300 text-base">طب فاكره .. احا انا مش فاكررررررر وحيات امك متنكدييي 😂</p>
+<p>بس إحنا فعلًا عندنا لحظات غريبة بالشكل ده.. وده يمكن أكتر حاجة بحبها فينا، إن مش كل حاجة محتاجة تكون كبيرة أو سينمائية.. ساعات أحلى الذكريات بتبقى حاجة عبيطة جدًا.. ضحكة في نص كلام.. هزار ملوش لازمة.. موقف محدش غيرنا هيفهم ليه كان مضحك.</p>
+<p>فلو يومك وحش... خدي استراحة من كل حاجة.. وافتكري إن في اتنين مجانين قاعدين في يوم من الأيام بيتكلموا في حاجات ملهاش أي لازمة وبيضحكوا عليها كأنهم اكتشفوا سر الكون.</p>
+<p class="text-base md:text-xl font-black font-cairo text-pink-300 text-center py-2">وأهو واحد منهم دلوقتي بيقول للتانية: ابتسمي يا هبلة. 😂❤️</p>`
+        },
+        {
+          id: "env-5",
+          icon: "😤",
+          title: "افتحي لما تزعلي مني",
+          tag: "اعتذار حقيقي",
+          content: `<p>لو إنتي زعلانة مني دلوقتي... فأنا أولًا آسف.</p>
+<p>بس مش هقول «آسف» وخلاص وأعتبر إن الموضوع انتهى.. لو أنا عملت حاجة ضايقتك، وأكيد عملت عشان كد كد بنتي مبتغلطش بس برضو لو حصل فأنا عايز أفهم إيه اللي وجعك فيها.</p>
+<p>لأن آخر حاجة عايزها إنك تتعودي على إنك تزعلّي وتسكتّي عشان تعدي.. أنا ممكن أغلط.. وممكن أقول حاجة بطريقة غلط.. وممكن أتصرف تصرف مش أحسن حاجة.. بس مش عايز أي حاجة تبقى أهم من زعلك.</p>
+<p>ولو محتاجة وقت، خدي وقتك.. مش هضغط عليكي عشان تسامحيني بسرعة.. بس لما تبقي جاهزة... تعالي نتكلم.. مش عشان أبرر لنفسي.. عشان أصلح اللي أقدر أصلحه.. وعشان أعرف إزاي ماكررش نفس الحاجة.</p>
+<p>وفي حاجة واحدة عايزك تعرفيها: إن زعلك مني ياريت ميبقاش معناه إن مكانتي عندك قلت.. ولا إن اللي بينا بقى أقل.. إحنا بشر، وبنغلط.. المهم بالنسبالي إيه اللي بنعمله بعد الغلط.</p>
+<p class="text-base font-bold font-cairo text-pink-300 text-center pt-2">فلو الجواب ده وصلك وإنتي لسه زعلانة... أنا مستنيكي.. ولما تيجي، هحضنك الأول. 🤍</p>`
+        },
+        {
+          id: "env-6",
+          icon: "🎂",
+          title: "افتحي في عيد ميلادك",
+          tag: "يوم ميلاد القمر",
+          content: `<p class="text-lg md:text-xl font-bold font-cairo text-pink-300 text-center">كل سنة وإنتي طيبة يا هنونتي. ❤️</p>
+<p>النهارده مش يوم عادي.. ده اليوم اللي جه فيه للعالم الشخص اللي بعد كده بقى له مكان كبير جدًا في عالمي.</p>
+<p>ومهما كتبت، مش هعرف أختصر كل اللي بينا في رسالة واحدة.. بس يمكن أكتر حاجة نفسي فيها النهارده إنك تكوني مبسوطة.. مش عشان عيد ميلادك بس.. عشان إنتي تستاهلي يبقى عندك أيام كتير حلوة، وضحك كتير، وحاجات نفسك فيها وتتحقق.</p>
+<p>وأتمنى لما ترجعي تفتكري السنة دي بعد وقت طويل... تفتكري منها حاجات تخليكي تبتسمي.. والسنة اللي بعدها كمان.. واللي بعدها.. واللي بعدها.</p>
+<p>وأنا مش عارف الحكاية هتاخدنا لفين بالظبط، بس عارف إني عايز أفضل أضيف معاكي ذكريات جديدة.. مش مجرد أقول «فاكرة؟».. لكن نبقى بعد فترة قاعدين ونقول: «فاكرة اليوم ده؟».. «فاكرة عملنا إيه؟».. «فاكرة كنا عاملين إزاي؟» 😂</p>
+<p class="text-base md:text-lg font-bold font-cairo text-purple-200 text-center pt-2">كل سنة وإنتي طيبة.. وكل سنة وإنتي بتكبري سنة... علي إيدي.. والحكاية بينا بتكبر معاها. ❤️</p>`
+        },
+        {
+          id: "env-7",
+          icon: "❤️",
+          title: "افتحي في ذكرى ارتباطنا",
+          tag: "عهد ووعد",
+          content: `<p class="font-bold text-purple-300 text-base md:text-lg">ذكرى جديدة.</p>
+<p>ومش عايز أتعامل معاها كأنها مجرد تاريخ في السنة.. لأن اللي حصل بينا أكبر من رقم مكتوب.. السنين دي كان فيها ضحك.. وخناقات.. ومصالحات.. وأيام اتكلمنا فيها بالساعات.. وأيام كان كل واحد فينا محتاج التاني فيها.</p>
+<div class="my-4 p-4 rounded-2xl bg-purple-950/40 border border-purple-500/30 text-center">
+  <p class="text-base md:text-xl font-black font-cairo text-pink-300">
+    وفي وسط كل ده، حصلت حاجة بسيطة جدًا...<br/>
+    إنتي بقيتي جزء من حياتي... لالا إنتي بقيتي حياتي كلها. ❤️
+  </p>
+</div>
+<p>وده يمكن أكتر شيء مستمر في كل الذكريات.. من أول الكلام... لحد اللحظة اللي إحنا فيها دلوقتي.</p>
+<p>أنا مش هقدر أوعدك إن كل الأيام الجاية هتبقى سهلة.. بس أقدر أوعدك بحاجة أهم: إني لما يحصل يوم صعب، مش هنتعامل معاه كأنه نهاية الحكاية.. هفتكر كل اللي بنيناه.. وهنحاول.. نتكلم.. نفهم بعض.. ونرجع لبعض.</p>
+<p>لأن بالنسبة لي، أحلى حاجة في حكايتنا مش إننا عمرنا ما زعلنا.. إننا كل مرة بنرجع نفتكر إن إحنا أهم من الزعل.</p>
+<p class="text-base font-bold font-cairo text-purple-200 text-center pt-2">كل سنة وإنتي معايا في الحكاية.. والأجمل؟ إن الحكاية لسه مخلصتش.. لسه في Chapters كتير مستنيانا. ❤️</p>`
+        },
+        {
+          id: "env-8",
+          icon: "🌙",
+          title: "افتحي لما تحتاجي تسمعي صوتي",
+          tag: "سند ودفى",
+          content: `<p>عارف إن الجواب ده مش هيشغلك صوتي فعلًا.. بس اعتبريه أنا قاعد بكلمك.. وبهدوء كده: <span class="text-lg font-bold font-cairo text-purple-300">«اهدي.»</span></p>
+<p>مش لازم كل حاجة تتحل دلوقتي.. ومش لازم تفكري في كل اللي جاي مرة واحدة.. خلي النهارده يخلص بس.</p>
+<p>ولو في حاجة مضايقاكي، احكيلي.. ولو مش عارفة تقولي إيه، عادي.. نقعد ساكتين حتى.. أنا أصلًا اتعودت على وجودك أكتر من الكلام نفسه.</p>
+<p>وعارفة إيه الغريب؟ إن في أوقات كتير مش محتاجين حاجة عظيمة عشان نحس إن الدنيا أخف.. مجرد إننا نتكلم.. عن يومنا.. عن حاجة حصلت.. عن حاجة ملهاش لازمة.. نضحك شوية.. وبعدين نكتشف إننا كنا محتاجين ده بس.</p>
+<p>فلو إنتي فتحتي الجواب ده لأنك محتاجة تسمعي صوتي... غمضي عينك ثواني.. وتخيلي إني بقولك:</p>
+<div class="my-4 p-4 rounded-2xl bg-gradient-to-r from-purple-950/60 to-pink-950/60 border border-purple-500/40 text-center">
+  <p class="text-base md:text-lg font-bold font-cairo text-pink-200">
+    «أنا هنا يا هنونتي.. خلاص.. اهدي.. وإحنا هنعديها واحدة واحدة.»
+  </p>
+</div>
+<p>وبعدين افتحي الشات وابعتِيلي..</p>
+<p class="text-base md:text-lg font-bold font-cairo text-pink-300 text-center pt-2">لأني بصراحة... الجواب ده مش هيقوم بواجبه كله لوحده ناقصه حضن تعالي خديه 😂❤️</p>`
+        }
+      ],
+
+      // Quiz Questions
+      quiz: [
+        {
+          question: "اليوم اللي كنا مطرودين فيه وقاعدة بره المدرسة في الشتا.. كنا بنتكلم عن إيه؟",
+          options: ["صحاب ثانوي", "البوتات والبرمجة", "الأغاني"],
+          correct: 1,
+          feedbackCorrect: "أيووووه 😂 كنت عارف إنك هتفتكري كل تفصيلة حتى كلام البوتات!",
+          feedbackIncorrect: "هنعديهالك المرة دي عشان شكلك نسيتي الأرشيف 👀"
+        },
+        {
+          question: "مين اللي كان معاكي وعاملة معاها ماتشينج في الشرابات؟",
+          options: ["سارة", "أبرار", "لوحدك"],
+          correct: 1,
+          feedbackCorrect: "صح يا ليتل دوك! أبرار والشرابات الماتشينج علامة مسجلة 😂",
+          feedbackIncorrect: "نسيتي أبرار يا ظالمة؟ هنعديها برضه 👀"
+        },
+        {
+          question: "الفيديو اللي بعتيهولي وانتي في أولى ثانوي كنتي بتعملي إيه؟",
+          options: ["بتعدلي الطرحة", "بتذاكري", "بتشربي عصير"],
+          correct: 0,
+          feedbackCorrect: "الله عليكي ❤️ لما كنتي بتعدلي الطرحة وقولتيلي اليوم ده كنت حباك أوي!",
+          feedbackIncorrect: "تعديل الطرحة يا بنتي! دي أهم لقطة في أولى ثانوي 😂"
+        },
+        {
+          question: "اتخانقنا كام مرة؟ (عملتي كام مصيبة كبيرة؟ 😂)",
+          options: ["1", "2", "3", "أكتر بكتير 😂"],
+          correct: 2,
+          feedbackCorrect: "صح يا مصيبة حياتي! 3 مصايب كبار بس برضه بحبك وعسل على قلبي 😂❤️",
+          feedbackIncorrect: "لا يا شيخة! هما 3 مصايب كبار مفيش غيرهم 😂"
+        },
+        {
+          question: "يزيد بالذال ولا بالزين؟",
+          options: ["بالزين (يزيد)", "بالذال (يذيد)"],
+          correct: 0,
+          specialKey: "yazeed_question",
+          feedbackCorrect: "يعني مش هشوف برضووو 😒😂",
+          feedbackIncorrect: "برضو لما نتجوز هشوف.. ابو تقل دم امكك 😂"
+        },
+        {
+          question: "أنا بحب أشرب إيه؟ 🥤",
+          options: ["قهوة", "شاي بلبن", "لبن 🥛", "عصير مانجا"],
+          correct: 2,
+          feedbackCorrect: "أيوة كده يا ليتل دوك.. لبن طبعاً مفيش غيره! 🥛❤️",
+          feedbackIncorrect: "بقى متعرفيش إني بحب أشرب لبن؟! ركزي شوية يا هنا 😂"
+        },
+        {
+          question: "إيه أسعد لحظات بحب أكلمك فيها في اليوم؟ 🌙",
+          options: [
+            "وإنتي فايقة ومصحصحة وبترغي",
+            "وإنتي رايحة في النوم وتايهة ومش واعية لكلامك (مود سيلا) 😴",
+            "أول ما بتصحي الصبح بدري",
+            "وإحنا بنتخانق عشان نتصالح 😂"
+          ],
+          correct: 1,
+          specialKey: "sleepy_hana_question",
+          feedbackCorrect: "صح يا أحلى سيلا في الكون! لما تبدأي تهتري وتفصلي شحن بتبقي قمر 😴❤️",
+          feedbackIncorrect: "لا يا بطة! فكري في اللحظة اللي عقلك بيفصل فيها وبتقولي أي هري وانتي نايمة 😂"
+        }
+      ],
+
+      // Chat Messages
+      chatMessages: [
+        { sender: "sharif", text: "وصلتي المدرسة؟", time: "07:45 AM" },
+        { sender: "hana", text: "مطرودين أنا وأبرار وقاعدين على الرصيف قالعين الكوتشي وبنعمل ماتشينج شرابات 😂", time: "07:48 AM" },
+        { sender: "sharif", text: "طب اسمعي البوت الجديد اللي عملته ده وبرمجته امبارح بالليل...", time: "07:49 AM" },
+        { sender: "hana", text: "احكيلي أنا سمعاك ومبسوطة ❤️️", time: "07:50 AM" }
+      ],
+
+      // Bucket list items
+      bucketList: [
+        { id: "bucket-1", title: "أول مقابلة ونشوف بعض في الحقيقة ونلمس إيد بعض" },
+        { id: "bucket-2", title: "أول صورة حقيقية نقف فيها جنب بعض ونتصور سيلفي" },
+        { id: "bucket-3", title: "خروجة كاملة من الصبح لليل نلف فيها شوارع مصر سوا" },
+        { id: "bucket-4", title: "سفرية سوا على البحر ونقعد نتفرج على الغروب وإنتي معايا" },
+        { id: "bucket-5", title: "مكان نفسنا نزوره وناكل فيه أكلتنا المفضلة" },
+        { id: "bucket-6", title: "أول يوم كامل نقضيه سوا من غير ما نبص في الساعة" }
+      ]
+    };
+
+    /**
+     * =================================================================
+     * 2. APPLICATION CENTRAL STATE & STORAGE
+     * =================================================================
+     */
+    const APP_STATE = {
+      unlocked: false,
+      selectedPersona: "shereef",
+      chatIndex: 0,
+      currentReasonIndex: 0,
+      quizCurrentIndex: 0,
+      quizScore: 0,
+      easterEggClicks: 0,
+      loveNoAttempt: 0,
+      trollClickCount: 0,
+      audioPlaying: false
+    };
+
+    const STORAGE_KEYS = {
+      UNLOCKED: 'hikayetna_unlocked',
+      OPENED_LETTERS: 'hikayetna_opened_letters',
+      BUCKET_LIST: 'hikayetna_bucket_list',
+      PERSONA: 'hikayetna_persona',
+      SECRET_FOUND: 'hikayetna_secret_found',
+      CAPSULE_WISH: 'hikayetna_capsule_wish'
+    };
+
+    // Safe LocalStorage Wrapper
+    function saveStorage(key, val) {
+      try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) { console.warn(e); }
+    }
+    function loadStorage(key, fallback) {
+      try {
+        const item = localStorage.getItem(key);
+        return item ? JSON.parse(item) : fallback;
+      } catch (e) {
+        return fallback;
+      }
+    }
+
+    /**
+     * =================================================================
+     * 3. WEB AUDIO API SYNTHESIZER (AMBIENT CHORD RESONANCE)
+     * =================================================================
+     * Generates soft, warm, ethereal ambient chord pads without requiring
+     * any external mp3 file. Seamless fallback to local music.mp3 if present.
+     */
+    let audioCtx = null;
+    let synthNodes = [];
+    let isSynthRunning = false;
+
+    function initWebAudioPad() {
+      if (audioCtx) return;
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AudioContext();
+    }
+
+    function startAmbientSynth() {
+      initWebAudioPad();
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      // Warm celestial chords (Frequencies in Hz: D3, A3, E4, F#4)
+      const chordFreqs = [146.83, 220.00, 329.63, 369.99];
+      const masterGain = audioCtx.createGain();
+      masterGain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+      masterGain.gain.exponentialRampToValueAtTime(0.06, audioCtx.currentTime + 3);
+
+      // Lowpass filter for dreamy atmosphere
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(450, audioCtx.currentTime);
+
+      masterGain.connect(filter);
+      filter.connect(audioCtx.destination);
+
+      synthNodes = chordFreqs.map(freq => {
+        const osc = audioCtx.createOscillator();
+        const oscGain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+        // Subtle detune for natural analog chorus feel
+        osc.detune.setValueAtTime((Math.random() - 0.5) * 8, audioCtx.currentTime);
+
+        oscGain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+        osc.connect(oscGain);
+        oscGain.connect(masterGain);
+        osc.start();
+        return osc;
+      });
+
+      synthNodes.push(masterGain);
+      isSynthRunning = true;
+    }
+
+    function stopAmbientSynth() {
+      if (!isSynthRunning || !synthNodes.length) return;
+      const masterGain = synthNodes[synthNodes.length - 1];
+      if (masterGain && masterGain.gain) {
+        masterGain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.5);
+        setTimeout(() => {
+          synthNodes.forEach(node => {
+            if (node.stop) try { node.stop(); } catch(e){}
+          });
+          synthNodes = [];
+          isSynthRunning = false;
+        }, 1600);
+      }
+    }
+
+    function toggleAudio() {
+      const audioIcon = document.getElementById('audio-icon');
+      const audioLabel = document.getElementById('audio-label');
+      const audioPulse = document.getElementById('audio-pulse');
+      const audioDot = document.getElementById('audio-dot');
+      const localPlayer = document.getElementById('local-audio-player');
+
+      if (!APP_STATE.audioPlaying) {
+        // Try local mp3 only if enabled in CONFIG, otherwise synthesized ambient pad
+        let localSuccess = false;
+        if (CONFIG.music && CONFIG.music.enabled && localPlayer) {
+          try {
+            const playPromise = localPlayer.play();
+            if (playPromise !== undefined) {
+              playPromise.then(() => {
+                localSuccess = true;
+              }).catch(() => {
+                startAmbientSynth();
+              });
+            }
+          } catch(e) {
+            startAmbientSynth();
+          }
+        }
+        if (!localSuccess) {
+          startAmbientSynth();
+        }
+
+        APP_STATE.audioPlaying = true;
+        if (audioIcon) audioIcon.className = "fa-solid fa-volume-high text-sm text-purple-400";
+        if (audioLabel) audioLabel.textContent = "صوت الحكاية: يعمل 🎵";
+        if (audioPulse) audioPulse.classList.remove('hidden');
+        if (audioDot) audioDot.className = "relative inline-flex rounded-full h-3 w-3 bg-purple-400";
+        showToast("بدأ صوت الحكاية الهادئ 💜");
+      } else {
+        if (localPlayer) {
+          try { localPlayer.pause(); } catch(e){}
+        }
+        stopAmbientSynth();
+        APP_STATE.audioPlaying = false;
+        if (audioIcon) audioIcon.className = "fa-solid fa-volume-xmark text-sm";
+        if (audioLabel) audioLabel.textContent = "صوت الحكاية: صامت";
+        if (audioPulse) audioPulse.classList.add('hidden');
+        if (audioDot) audioDot.className = "relative inline-flex rounded-full h-3 w-3 bg-zinc-600";
+        showToast("تم كتم الصوت 🌙");
+      }
+    }
+
+    /**
+     * =================================================================
+     * 4. ATMOSPHERIC CANVAS PARTICLES
+     * =================================================================
+     */
+    function initAtmosphericCanvas() {
+      const canvas = document.getElementById('ambient-canvas');
+      if (!canvas) return;
+      let ctx;
+      try { ctx = canvas.getContext('2d'); } catch(e) {}
+      if (!ctx) return;
+      let particles = [];
+      const isMobile = window.innerWidth < 768;
+      const count = isMobile ? 35 : 75;
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.5 + 0.5,
+          color: Math.random() > 0.4 ? 'rgba(168, 85, 247, ' : 'rgba(221, 214, 254, ',
+          alpha: Math.random() * 0.6 + 0.2,
+          speedY: Math.random() * 0.4 + 0.1,
+          speedX: (Math.random() - 0.5) * 0.2
+        });
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let p of particles) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color + p.alpha + ')';
+          ctx.fill();
+
+          p.y -= p.speedY;
+          p.x += p.speedX;
+
+          if (p.y < 0) {
+            p.y = canvas.height;
+            p.x = Math.random() * canvas.width;
+          }
+          if (p.x < 0) p.x = canvas.width;
+          if (p.x > canvas.width) p.x = 0;
+        }
+        requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+    }
+
+    /**
+     * =================================================================
+     * 5. TOAST NOTIFICATION UTILITY
+     * =================================================================
+     */
+    function showToast(message, duration = 3500) {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = "px-5 py-3 rounded-2xl bg-zinc-900/90 border border-purple-500/40 text-white text-xs md:text-sm font-tajawal shadow-purple-glow backdrop-blur-md transition-all duration-300 transform translate-y-[-10px] opacity-0 text-center";
+      toast.textContent = message;
+      container.appendChild(toast);
+
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-[-10px]', 'opacity-0');
+      });
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-[-10px]');
+        setTimeout(() => toast.remove(), 400);
+      }, duration);
+    }
+
+    /**
+     * =================================================================
+     * 6. PHASE 1: THE GATE & TROLL BUTTON BEHAVIOR
+     * =================================================================
+     */
+    const monologueLines = [
+      "أهلاً بيكي في أكتر مكان أنا عملته مخصوص عشانك..",
+      "هنا كل حاجة ليها حكاية وذكرى ما بينا.",
+      "إنتي وصلتي...",
+      "بس قبل ما ندخل... جاهزة نفتكر كل حاجة؟"
+    ];
+
+    let monologueTimer = null;
+    let monologueSubTimer = null;
+
+    function revealPasswordCardImmediately() {
+      if (monologueTimer) clearTimeout(monologueTimer);
+      if (monologueSubTimer) clearTimeout(monologueSubTimer);
+      const monoBox = document.getElementById('gate-monologue-box');
+      const pwdCard = document.getElementById('gate-password-card');
+      if (monoBox) monoBox.classList.add('hidden');
+      if (pwdCard) {
+        pwdCard.classList.remove('opacity-0', 'translate-y-6', 'pointer-events-none');
+        pwdCard.classList.add('opacity-100', 'translate-y-0');
+      }
+      const pwdInput = document.getElementById('password-input');
+      if (pwdInput) {
+        setTimeout(() => pwdInput.focus(), 150);
+      }
+    }
+
+    function runGateMonologue() {
+      const monoText = document.getElementById('gate-monologue-text');
+      const pwdCard = document.getElementById('gate-password-card');
+      if (!monoText || !pwdCard) return;
+      let index = 0;
+
+      function showNextLine() {
+        if (index < monologueLines.length) {
+          monoText.classList.remove('opacity-0');
+          monoText.textContent = monologueLines[index];
+          index++;
+          monologueTimer = setTimeout(() => {
+            if (index < monologueLines.length) {
+              monoText.classList.add('opacity-0');
+              monologueSubTimer = setTimeout(showNextLine, 350);
+            } else {
+              // Reveal password card
+              monologueSubTimer = setTimeout(() => {
+                revealPasswordCardImmediately();
+              }, 400);
+            }
+          }, 1400);
+        }
+      }
+      monologueTimer = setTimeout(showNextLine, 500);
+    }
+
+    // Troll button interactive behavior
+    function setupTrollButton() {
+      const trollBtn = document.getElementById('troll-btn');
+      const trollBtnText = document.getElementById('troll-btn-text');
+      const pwdInput = document.getElementById('password-input');
+
+      if (!trollBtn || !pwdInput) return;
+
+      trollBtn.addEventListener('click', (e) => {
+        APP_STATE.trollClickCount++;
+
+        // Click 1: Moves Down
+        if (APP_STATE.trollClickCount === 1) {
+          trollBtn.style.transform = 'translateY(50px)';
+          showToast("آسف بهزر 😂 خلاص يلا دوسي تاني");
+          return;
+        }
+
+        // Click 2: Moves Left
+        if (APP_STATE.trollClickCount === 2) {
+          trollBtn.style.transform = 'translate(-50px, 0)';
+          showToast("بهزر بهزر متزعليش خلاص اهو 😂 اضغطي هنا");
+          return;
+        }
+
+        // Click 3: Returns to origin
+        if (APP_STATE.trollClickCount === 3) {
+          trollBtn.style.transform = 'translate(0, 0)';
+          showToast("يلا اكتبي الباسورد ودوسي بجد بقى ❤️");
+          return;
+        }
+
+        // Click 4+: Password Validation
+        validatePassword();
+      });
+
+      // Press Enter to submit directly (instant bypass of troll for convenience)
+      pwdInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          validatePassword();
+        }
+      });
+    }
+
+    function validatePassword() {
+      const pwdInput = document.getElementById('password-input');
+      const trollBtn = document.getElementById('troll-btn');
+      const trollBtnText = document.getElementById('troll-btn-text');
+      if (!pwdInput) return;
+      const userValue = pwdInput.value.trim().toLowerCase();
+
+      const isMatch = CONFIG.passwords.some(p => p.toLowerCase() === userValue);
+
+      if (isMatch) {
+        unlockSanctuary();
+      } else {
+        // Shake animation
+        pwdInput.classList.add('shake-error');
+        if (trollBtn) trollBtn.classList.add('shake-error');
+        setTimeout(() => {
+          pwdInput.classList.remove('shake-error');
+          if (trollBtn) trollBtn.classList.remove('shake-error');
+        }, 500);
+
+        showToast("الباسورد غلط! ركزي شوية يا هنا 👀");
+
+        // Exactly 3.5 seconds later, change button text dynamically
+        setTimeout(() => {
+          if (trollBtnText) {
+            trollBtnText.textContent = "الباسورد غلط... عشان انتي الحاجة الوحيدة الصح في حياتي عموماا ❤️";
+          }
+        }, 3500);
+      }
+    }
+
+    let warpCompleteTimer = null;
+
+    function finishWarpImmediately() {
+      if (warpCompleteTimer) clearTimeout(warpCompleteTimer);
+      const warp = document.getElementById('unlock-warp-overlay');
+      const gate = document.getElementById('entry-gate');
+      const world = document.getElementById('main-world');
+      if (warp) {
+        warp.classList.add('opacity-0', 'pointer-events-none');
+      }
+      if (gate) {
+        gate.classList.add('opacity-0', 'pointer-events-none');
+      }
+      if (world) {
+        world.classList.remove('opacity-0');
+        world.classList.add('opacity-100');
+      }
+      showToast("نورتي عالمنا الخاص يا ليتل دوك 💜");
+    }
+
+    // Unlocking Sequence & Spatial Tunnel
+    function unlockSanctuary() {
+      saveStorage(STORAGE_KEYS.UNLOCKED, true);
+      APP_STATE.unlocked = true;
+
+      // Confetti burst
+      confetti({
+        particleCount: 80,
+        spread: 100,
+        origin: { y: 0.6 },
+        colors: ['#a855f7', '#ec4899', '#ddd6fe', '#ffffff']
+      });
+
+      // Warp overlay reveals
+      const warp = document.getElementById('unlock-warp-overlay');
+      const line1 = document.getElementById('warp-line-1');
+      const line2 = document.getElementById('warp-line-2');
+      const line3 = document.getElementById('warp-line-3');
+
+      if (warp) {
+        warp.classList.remove('pointer-events-none', 'opacity-0');
+        warp.classList.add('opacity-100');
+      }
+
+      if (line1) setTimeout(() => line1.classList.remove('opacity-0'), 300);
+      if (line2) setTimeout(() => line2.classList.remove('opacity-0'), 1000);
+      if (line3) setTimeout(() => line3.classList.remove('opacity-0'), 1800);
+
+      warpCompleteTimer = setTimeout(() => {
+        finishWarpImmediately();
+      }, 2800);
+    }
+
+    /**
+     * =================================================================
+     * 7. LIVE MATHEMATICAL CHRONOMETERS
+     * =================================================================
+     */
+    function updateChronometers() {
+      const now = new Date();
+
+      // 1. Journey Counter (from June 10, 2024)
+      const journeyDiff = now - CONFIG.dates.journeyStart;
+      if (journeyDiff > 0) {
+        const jDays = Math.floor(journeyDiff / (1000 * 60 * 60 * 24));
+        const jHours = Math.floor((journeyDiff / (1000 * 60 * 60)) % 24);
+        const jMins = Math.floor((journeyDiff / (1000 * 60)) % 60);
+        const jSecs = Math.floor((journeyDiff / 1000) % 60);
+        document.getElementById('chrono-journey').textContent = 
+          `${jDays}d ${String(jHours).padStart(2, '0')}h ${String(jMins).padStart(2, '0')}m ${String(jSecs).padStart(2, '0')}s`;
+      }
+
+      // 2. Hana's Life (from July 31, 2009)
+      const hanaDiff = now - CONFIG.dates.hanaBirth;
+      if (hanaDiff > 0) {
+        const hYears = Math.floor(hanaDiff / (1000 * 60 * 60 * 24 * 365.25));
+        const hDays = Math.floor((hanaDiff / (1000 * 60 * 60 * 24)) % 365.25);
+        const hHours = Math.floor((hanaDiff / (1000 * 60 * 60)) % 24);
+        document.getElementById('chrono-hana').textContent = 
+          `${hYears}y ${hDays}d ${String(hHours).padStart(2, '0')}h`;
+      }
+
+      // 3. Sharif's Life (from October 1, 2002)
+      const sharifDiff = now - CONFIG.dates.sharifBirth;
+      if (sharifDiff > 0) {
+        const sYears = Math.floor(sharifDiff / (1000 * 60 * 60 * 24 * 365.25));
+        const sDays = Math.floor((sharifDiff / (1000 * 60 * 60 * 24)) % 365.25);
+        const sHours = Math.floor((sharifDiff / (1000 * 60 * 60)) % 24);
+        document.getElementById('chrono-sharif').textContent = 
+          `${sYears}y ${sDays}d ${String(sHours).padStart(2, '0')}h`;
+      }
+
+      // 4. Milestone
+      document.getElementById('chrono-milestone').textContent = `${CONFIG.dates.togetherMilestoneDays}+ Days`;
+
+      // 5. Time Capsule Countdown
+      const capsuleDiff = CONFIG.dates.nextAnniversary - now;
+      if (capsuleDiff > 0) {
+        const cDays = Math.floor(capsuleDiff / (1000 * 60 * 60 * 24));
+        const cHours = Math.floor((capsuleDiff / (1000 * 60 * 60)) % 24);
+        const cMins = Math.floor((capsuleDiff / (1000 * 60)) % 60);
+        const cSecs = Math.floor((capsuleDiff / 1000) % 60);
+        document.getElementById('capsule-days').textContent = String(cDays).padStart(2, '0');
+        document.getElementById('capsule-hours').textContent = String(cHours).padStart(2, '0');
+        document.getElementById('capsule-minutes').textContent = String(cMins).padStart(2, '0');
+        document.getElementById('capsule-seconds').textContent = String(cSecs).padStart(2, '0');
+      } else {
+        document.getElementById('capsule-days').textContent = "00";
+        document.getElementById('capsule-hours').textContent = "00";
+        document.getElementById('capsule-minutes').textContent = "00";
+        document.getElementById('capsule-seconds').textContent = "00";
+        const capBtn = document.getElementById('capsule-open-btn');
+        capBtn.innerHTML = '<i class="fa-solid fa-lock-open text-xs mr-1 text-emerald-400"></i> جاهزة تفتح دلوقتي!';
+        capBtn.classList.replace('bg-zinc-800', 'bg-emerald-900/60');
+      }
+    }
+
+    /**
+     * =================================================================
+     * 8. HERO CTA PLAYFUL CYCLING
+     * =================================================================
+     */
+    function setupHeroCtaCycling() {
+      const label = document.getElementById('hero-cta-label');
+      const messages = ["شوفي الحكاية ✨", "مش وقت انبهار يلااا 😂", "أيي كل ده؟ 😂", "شوفي الحكاية ✨"];
+      let idx = 0;
+      setInterval(() => {
+        idx = (idx + 1) % messages.length;
+        label.textContent = messages[idx];
+      }, 3500);
+    }
+
+    /**
+     * =================================================================
+     * 9. RENDER MEMORIES GRID (THE VAULT)
+     * =================================================================
+     */
+    function renderMemoriesGrid() {
+      const grid = document.getElementById('memories-grid');
+      grid.innerHTML = '';
+
+      CONFIG.memories.forEach(mem => {
+        const card = document.createElement('div');
+        card.id = mem.id;
+        card.className = "glass-panel glass-panel-hover rounded-3xl p-6 border border-white/5 flex flex-col justify-between group cursor-pointer";
+        card.onclick = () => openMemoryModal(mem);
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-xs font-tajawal font-bold text-purple-300 bg-purple-950/60 px-3 py-1 rounded-full border border-purple-500/20">
+                ${mem.tag}
+              </span>
+              <span class="text-[11px] text-zinc-400 font-tajawal">${mem.period}</span>
+            </div>
+            <h3 class="text-lg md:text-xl font-bold font-cairo text-white mb-2 group-hover:text-purple-300 transition-colors">
+              ${mem.title}
+            </h3>
+            <p class="text-xs md:text-sm text-zinc-300 font-tajawal leading-relaxed line-clamp-3 mb-4">
+              ${mem.shortDescription}
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-zinc-800/80 flex items-center justify-between">
+            <span class="text-xs font-bold font-tajawal text-purple-400 group-hover:text-purple-300 flex items-center gap-1.5">
+              <span>اقرأي الذكرى كاملة</span>
+              <i class="fa-solid fa-arrow-left text-[10px] group-hover:-translate-x-1 transition-transform"></i>
+            </span>
+            ${mem.artisticRecreation ? `
+              <span class="text-[9px] text-zinc-500 font-tajawal bg-black/40 px-2 py-0.5 rounded border border-white/5" title="اللحظة دي حصلت بجد... الصورة لأ">
+                إعادة تصور فنية
+              </span>
+            ` : ''}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function openMemoryModal(mem) {
+      const modal = document.getElementById('app-modal');
+      const card = document.getElementById('modal-card');
+      const tagBadge = document.getElementById('modal-tag-badge');
+      const content = document.getElementById('modal-body-content');
+
+      tagBadge.textContent = mem.tag + " • " + mem.period;
+
+      content.innerHTML = `
+        <h2 class="text-2xl md:text-3xl font-black font-cairo text-white mb-4">
+          ${mem.title}
+        </h2>
+
+        ${mem.artisticRecreation ? `
+          <div class="p-3 rounded-2xl bg-purple-950/40 border border-purple-500/30 text-xs text-purple-200 font-tajawal flex items-center gap-2 mb-4">
+            <i class="fa-solid fa-paintbrush text-sm text-purple-400"></i>
+            <span>«اللحظة دي حصلت بجد... الصورة لأ (إعادة تصور فنية لذكرى حقيقية)»</span>
+          </div>
+        ` : ''}
+
+        <div class="glass-pill p-5 rounded-2xl border border-white/5 mb-6">
+          <h4 class="text-xs font-bold font-jakarta text-purple-400 mb-2 uppercase tracking-wider">الحكاية الكاملة</h4>
+          <p class="text-sm md:text-base text-zinc-200 font-tajawal leading-relaxed">
+            ${mem.story}
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-4 rounded-2xl bg-black/40 border border-purple-500/20">
+            <span class="text-xs font-bold font-tajawal text-purple-300 block mb-1">من وجهة نظر شريف 🤍</span>
+            <p class="text-xs text-zinc-300 font-tajawal leading-relaxed">${mem.hisPerspective || 'مستنيين نكتب التفصيلة دي سوا.'}</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-black/40 border border-pink-500/20">
+            <span class="text-xs font-bold font-tajawal text-pink-300 block mb-1">من وجهة نظر هنا ❤️</span>
+            <p class="text-xs text-zinc-300 font-tajawal leading-relaxed">${mem.herPerspective || 'مستنيين نكتب التفصيلة دي سوا.'}</p>
+          </div>
+        </div>
+
+        <div class="pt-4 text-center">
+          <button type="button" onclick="closeModal()" class="px-6 py-2.5 rounded-full bg-purple-900/60 hover:bg-purple-800 text-white text-xs font-bold font-tajawal min-touch">
+            إغلاق الذكرى
+          </button>
+        </div>
+      `;
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      card.classList.remove('scale-95');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('app-modal');
+      const card = document.getElementById('modal-card');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      card.classList.add('scale-95');
+    }
+
+    // Trigger Random Memory
+    function triggerRandomMemory() {
+      const randomIndex = Math.floor(Math.random() * CONFIG.memories.length);
+      const chosen = CONFIG.memories[randomIndex];
+      const targetCard = document.getElementById(chosen.id);
+
+      if (targetCard) {
+        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        targetCard.classList.add('ring-2', 'ring-purple-400', 'shadow-purple-glow');
+        setTimeout(() => {
+          targetCard.classList.remove('ring-2', 'ring-purple-400', 'shadow-purple-glow');
+          openMemoryModal(chosen);
+        }, 800);
+      }
+    }
+
+    /**
+     * =================================================================
+     * 10. POLAROID WALL INTERACTIONS
+     * =================================================================
+     */
+    function handlePolaroidClick(el) {
+      confetti({
+        particleCount: 25,
+        spread: 60,
+        origin: { y: 0.7 },
+        colors: ['#ef4444', '#ec4899', '#a855f7']
+      });
+      showToast("قلوب وصلت للذكرى دي ❤️");
+    }
+
+    /**
+     * =================================================================
+     * 11. CHAT RE-ENACTMENT SYSTEM
+     * =================================================================
+     */
+    function renderChatMessages() {
+      const box = document.getElementById('chat-messages-box');
+      box.innerHTML = '';
+
+      for (let i = 0; i <= APP_STATE.chatIndex && i < CONFIG.chatMessages.length; i++) {
+        const msg = CONFIG.chatMessages[i];
+        const isSharif = msg.sender === 'sharif';
+
+        const row = document.createElement('div');
+        row.className = `flex flex-col ${isSharif ? 'items-start' : 'items-end'} fade-in-blur`;
+
+        row.innerHTML = `
+          <div class="max-w-[82%] px-4 py-2.5 rounded-2xl text-xs md:text-sm ${
+            isSharif 
+              ? 'bg-zinc-800 text-zinc-100 rounded-tr-none border border-zinc-700/50' 
+              : 'bg-purple-700 text-white rounded-tl-none shadow-md'
+          }">
+            <p>${msg.text}</p>
+          </div>
+          <span class="text-[9px] text-zinc-500 px-1 mt-1 font-jakarta">${msg.time}</span>
+        `;
+        box.appendChild(row);
+      }
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function nextChatMessage() {
+      if (APP_STATE.chatIndex < CONFIG.chatMessages.length - 1) {
+        const typing = document.getElementById('chat-typing');
+        typing.classList.remove('hidden');
+        typing.classList.add('flex');
+
+        setTimeout(() => {
+          typing.classList.add('hidden');
+          typing.classList.remove('flex');
+          APP_STATE.chatIndex++;
+          renderChatMessages();
+        }, 500);
+      } else {
+        showToast("دي نهاية المقطع المتسجل من الشات حالياً ❤️");
+      }
+    }
+
+    function prevChatMessage() {
+      if (APP_STATE.chatIndex > 0) {
+        APP_STATE.chatIndex--;
+        renderChatMessages();
+      }
+    }
+
+    function replayChat() {
+      APP_STATE.chatIndex = 0;
+      renderChatMessages();
+      showToast("تمت إعادة تشغيل المحادثة 🔄");
+    }
+
+    /**
+     * =================================================================
+     * 12. THE 50 REASONS LOVE JAR
+     * =================================================================
+     */
+    function pickRandomReason() {
+      const idx = Math.floor(Math.random() * CONFIG.reasons.length);
+      APP_STATE.currentReasonIndex = idx;
+      
+      const numLabel = document.getElementById('reason-number');
+      const textLabel = document.getElementById('reason-text');
+
+      textLabel.classList.add('opacity-0');
+      setTimeout(() => {
+        numLabel.textContent = `سبب رقم ${idx + 1} من 50`;
+        textLabel.textContent = CONFIG.reasons[idx];
+        textLabel.classList.remove('opacity-0');
+      }, 200);
+
+      confetti({
+        particleCount: 20,
+        spread: 40,
+        origin: { y: 0.8 },
+        colors: ['#a855f7', '#ec4899', '#ffffff']
+      });
+    }
+
+    function openAllReasonsModal() {
+      const modal = document.getElementById('app-modal');
+      const card = document.getElementById('modal-card');
+      const tagBadge = document.getElementById('modal-tag-badge');
+      const content = document.getElementById('modal-body-content');
+
+      tagBadge.textContent = "الأرشيف الكامل • 50 سبب";
+
+      let reasonsHTML = `
+        <h2 class="text-2xl font-black font-cairo text-white mb-4 text-center">
+          50 سبب بيخلوني أحبك
+        </h2>
+        <div class="space-y-3 max-h-[60vh] overflow-y-auto pr-2">
+      `;
+
+      CONFIG.reasons.forEach((r, i) => {
+        reasonsHTML += `
+          <div class="p-3.5 rounded-2xl bg-black/40 border border-white/5 flex items-start gap-3">
+            <span class="text-xs font-bold font-jakarta text-purple-400 px-2 py-0.5 rounded-lg bg-purple-950/60 shrink-0">#${i + 1}</span>
+            <p class="text-xs md:text-sm font-tajawal text-zinc-200 leading-relaxed">${r}</p>
+          </div>
+        `;
+      });
+
+      reasonsHTML += `
+        </div>
+        <div class="pt-4 text-center">
+          <button type="button" onclick="closeModal()" class="px-6 py-2.5 rounded-full bg-purple-600 text-white text-xs font-bold font-tajawal min-touch">
+            إغلاق
+          </button>
+        </div>
+      `;
+
+      content.innerHTML = reasonsHTML;
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      card.classList.remove('scale-95');
+    }
+
+    /**
+     * =================================================================
+     * 13. RENDER THE 8 ENVELOPES («افتحي لما...»)
+     * =================================================================
+     */
+    function renderEnvelopesGrid() {
+      const grid = document.getElementById('envelopes-grid');
+      const opened = loadStorage(STORAGE_KEYS.OPENED_LETTERS, []);
+      grid.innerHTML = '';
+
+      CONFIG.envelopes.forEach(env => {
+        const isOpened = opened.includes(env.id);
+        const card = document.createElement('div');
+        card.className = "envelope-card glass-panel rounded-3xl p-6 border border-white/5 hover:border-purple-500/40 text-center flex flex-col justify-between items-center cursor-pointer group min-touch";
+        card.onclick = () => openEnvelopeModal(env);
+
+        card.innerHTML = `
+          <div>
+            <div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform">
+              ${env.icon}
+            </div>
+            <h3 class="text-base md:text-lg font-bold font-cairo text-white mb-1 group-hover:text-purple-300 transition-colors">
+              ${env.title}
+            </h3>
+            <span class="text-xs text-zinc-400 font-tajawal block mb-4">${env.tag}</span>
+          </div>
+
+          <div class="w-full pt-4 border-t border-zinc-800/80 flex items-center justify-between">
+            <span class="text-xs font-bold font-tajawal text-purple-400 group-hover:text-purple-300">افتحي الجواب 💌</span>
+            ${isOpened ? `
+              <span class="text-[10px] text-emerald-400 font-tajawal flex items-center gap-1">
+                <i class="fa-solid fa-check text-[9px]"></i> تم الفتح
+              </span>
+            ` : ''}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function openEnvelopeModal(env) {
+      // Mark as opened in storage
+      const opened = loadStorage(STORAGE_KEYS.OPENED_LETTERS, []);
+      if (!opened.includes(env.id)) {
+        opened.push(env.id);
+        saveStorage(STORAGE_KEYS.OPENED_LETTERS, opened);
+        renderEnvelopesGrid();
+      }
+
+      const modal = document.getElementById('app-modal');
+      const card = document.getElementById('modal-card');
+      const tagBadge = document.getElementById('modal-tag-badge');
+      const content = document.getElementById('modal-body-content');
+
+      tagBadge.textContent = "رسالة خاصة • " + env.tag;
+
+      content.innerHTML = `
+        <div class="text-center pb-4">
+          <span class="text-4xl block mb-2">${env.icon}</span>
+          <h2 class="text-2xl font-black font-cairo text-white">
+            ${env.title}
+          </h2>
+        </div>
+
+        <div class="glass-pill p-6 md:p-8 rounded-3xl border border-purple-500/20 bg-purple-950/20 relative shadow-inner">
+          <div class="text-sm md:text-base text-zinc-100 font-tajawal leading-relaxed space-y-3.5 text-right">
+            ${env.content}
+          </div>
+          <div class="pt-6 text-left border-t border-white/5 mt-4">
+            <span class="text-xs font-bold font-tajawal text-purple-300">من شريف، ليكي وحدك ❤️</span>
+          </div>
+        </div>
+
+        <div class="pt-4 text-center">
+          <button type="button" onclick="closeModal()" class="px-6 py-2.5 rounded-full bg-purple-900/60 hover:bg-purple-800 text-white text-xs font-bold font-tajawal min-touch">
+            احتفظي بالكلام في قلبك 💜
+          </button>
+        </div>
+      `;
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      card.classList.remove('scale-95');
+    }
+
+    /**
+     * =================================================================
+     * 14. MEMORY QUIZ SYSTEM
+     * =================================================================
+     */
+    function renderQuizQuestion() {
+      const q = CONFIG.quiz[APP_STATE.quizCurrentIndex];
+      const title = document.getElementById('quiz-question-title');
+      const optionsBox = document.getElementById('quiz-options-box');
+      const progressText = document.getElementById('quiz-progress-text');
+      const nextBtn = document.getElementById('quiz-next-btn');
+      const feedbackBox = document.getElementById('quiz-feedback-box');
+
+      progressText.textContent = `سؤال ${APP_STATE.quizCurrentIndex + 1} من ${CONFIG.quiz.length}`;
+      title.textContent = q.question;
+      optionsBox.innerHTML = '';
+      feedbackBox.classList.add('hidden');
+      nextBtn.disabled = true;
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = "w-full p-4 rounded-2xl glass-pill hover:border-purple-400 text-right font-tajawal text-sm md:text-base text-zinc-200 hover:text-white transition-all min-touch flex items-center justify-between";
+        btn.innerHTML = `
+          <span>${opt}</span>
+          <span class="w-5 h-5 rounded-full border border-zinc-600 flex items-center justify-center text-[10px] text-zinc-400">
+            ${idx + 1}
+          </span>
+        `;
+        btn.onclick = () => handleQuizOptionSelect(idx, btn);
+        optionsBox.appendChild(btn);
+      });
+    }
+
+    function handleQuizOptionSelect(selectedIdx, clickedBtn) {
+      const q = CONFIG.quiz[APP_STATE.quizCurrentIndex];
+      const optionsBox = document.getElementById('quiz-options-box');
+      const nextBtn = document.getElementById('quiz-next-btn');
+      const feedbackBox = document.getElementById('quiz-feedback-box');
+
+      // Disable all buttons in options box
+      Array.from(optionsBox.children).forEach(btn => btn.disabled = true);
+
+      if (selectedIdx === q.correct) {
+        APP_STATE.quizScore++;
+        clickedBtn.classList.add('border-emerald-500', 'bg-emerald-950/40', 'text-emerald-200');
+        feedbackBox.textContent = q.feedbackCorrect;
+        feedbackBox.className = "min-h-[50px] flex items-center justify-center text-center font-tajawal font-bold text-sm md:text-base text-emerald-400";
+        confetti({ particleCount: 20, spread: 50, origin: { y: 0.7 } });
+
+        // Special custom notification for Yazeed question
+        if (q.specialKey === "yazeed_question") {
+          showToast("يعني مش هشوف برضووو 😒😂", 4000);
+        }
+        // Special custom notification for Sleepy Hana question
+        if (q.specialKey === "sleepy_hana_question") {
+          showToast("صح يا سيلا! 😂 لما بتفصلي وتبدأي تهتري ده ألطف وأعظم وقت في الكون 😴❤️", 4500);
+        }
+      } else {
+        clickedBtn.classList.add('border-red-500', 'bg-red-950/40', 'text-red-200');
+        // Highlight correct one
+        optionsBox.children[q.correct].classList.add('border-emerald-500', 'text-emerald-200');
+        feedbackBox.textContent = q.feedbackIncorrect;
+        feedbackBox.className = "min-h-[50px] flex items-center justify-center text-center font-tajawal font-bold text-sm md:text-base text-purple-300";
+
+        // Special custom notification for Yazeed question
+        if (q.specialKey === "yazeed_question") {
+          showToast("برضو لما نتجوز هشوف 👀😂", 2600);
+          setTimeout(() => {
+            showToast("ابو تقل دم امكك 😂", 3500);
+          }, 2400);
+        }
+        // Special custom notification for Sleepy Hana question
+        if (q.specialKey === "sleepy_hana_question") {
+          showToast("غلط يا فالحة! فكري في اللحظة اللي بتفصلي فيها شحن وتهتري بنص كلمة 👀😂", 4000);
+        }
+      }
+
+      feedbackBox.classList.remove('hidden');
+      nextBtn.disabled = false;
+    }
+
+    function nextQuizQuestion() {
+      if (APP_STATE.quizCurrentIndex < CONFIG.quiz.length - 1) {
+        APP_STATE.quizCurrentIndex++;
+        renderQuizQuestion();
+      } else {
+        // Show result screen
+        document.getElementById('quiz-container').classList.add('hidden');
+        document.getElementById('quiz-result-screen').classList.remove('hidden');
+        confetti({ particleCount: 60, spread: 80, origin: { y: 0.6 } });
+      }
+    }
+
+    function resetQuiz() {
+      APP_STATE.quizCurrentIndex = 0;
+      APP_STATE.quizScore = 0;
+      document.getElementById('quiz-result-screen').classList.add('hidden');
+      document.getElementById('quiz-container').classList.remove('hidden');
+      renderQuizQuestion();
+    }
+
+    /**
+     * =================================================================
+     * 15. MINI-GAME («بتحبيني قد إيه؟»)
+     * =================================================================
+     */
+    function handleLoveYesClick() {
+      confetti({
+        particleCount: 100,
+        spread: 100,
+        origin: { y: 0.6 },
+        colors: ['#ef4444', '#ec4899', '#ffffff']
+      });
+      document.getElementById('mini-game-response').textContent = "وأنا بعشقك يا أحلى وأجمل حاجة حصلت في عمري كله ❤️";
+      showToast("عارف ومفيش شك في حبنا أبداً 🥰");
+    }
+
+    function evadeLoveNoBtn(e) {
+      if (e && e.type === 'touchstart' && e.cancelable) {
+        e.preventDefault();
+      }
+      APP_STATE.loveNoAttempt++;
+      const noBtn = document.getElementById('love-no-btn');
+      const response = document.getElementById('mini-game-response');
+
+      if (APP_STATE.loveNoAttempt <= 4) {
+        // Dynamic realistic evasion positions bounded safely for mobile
+        const randomX = (Math.random() > 0.5 ? 1 : -1) * (Math.floor(Math.random() * 45) + 30);
+        const randomY = (Math.random() > 0.5 ? 1 : -1) * (Math.floor(Math.random() * 25) + 15);
+        noBtn.style.transform = `translate(${randomX}px, ${randomY}px) scale(0.95)`;
+
+        const funnyMessages = [
+          "هتروحي فين بس؟ الزرار بيهرب منك 😂",
+          "بلاش حركات قرعة بقى! دوسي على بحبك موت 😜",
+          "مش بحبك إيه يا كذابة؟ ده إنتي بتموتي فيا ومفضوحة من عنيكي 😂❤️",
+          "بتجري ورا الزرار في الشاشة؟ مسيرك هتدوسي بحبك موت!"
+        ];
+        response.textContent = funnyMessages[(APP_STATE.loveNoAttempt - 1) % funnyMessages.length];
+        showToast(response.textContent, 2500);
+      } else {
+        noBtn.style.transform = 'translate(0, 0) scale(1)';
+        response.textContent = "خلاص تعبت مش ههرب تاني.. بس برضه مفيش مفر من قدري معاكي، عيشتي وموتك معايا 😂❤️";
+        showToast("خلاص استسلمت.. دوسي براحتك بس إنتي بتموتي فيا برضه 😂❤️", 3500);
+      }
+    }
+
+    function handleLoveNoClick() {
+      const response = document.getElementById('mini-game-response');
+      response.textContent = "بتقولي مش بحبك؟ ده إنتي بتعشقيني ومتقدريش تعيشي من غيري ثانية واحدة ومفيش مفر من حبنا 😂❤️";
+      confetti({ particleCount: 40, spread: 70, origin: { y: 0.7 } });
+      showToast("كدابة ومفضوحة من عنيكي وعارف إنك بتموتي فيا من أول نظرة 😂❤️", 4000);
+    }
+
+    /**
+     * =================================================================
+     * 16. PERSONAS SWITCHER (SHEREEF + SEELA)
+     * =================================================================
+     */
+    function selectPersona(personaKey) {
+      APP_STATE.selectedPersona = personaKey;
+      saveStorage(STORAGE_KEYS.PERSONA, personaKey);
+
+      document.body.className = `bg-obsidian text-zinc-100 min-h-screen relative font-tajawal persona-${personaKey}`;
+      
+      const pName = document.getElementById('persona-indicator-name');
+      const pIcon = document.getElementById('persona-indicator-icon');
+
+      if (personaKey === 'shereef') {
+        pName.textContent = "شريف الحنين";
+        pIcon.textContent = "🤍";
+        showToast("اتفتحت شخصية شريف الحنين (الهدوء والأمان والسند) 🤍");
+      } else if (personaKey === 'dark') {
+        pName.textContent = "دارك شريف";
+        pIcon.textContent = "🖤";
+        showToast("اتفتحت شخصية دارك شريف (الحامي القوي والدرع) 🖤");
+      } else if (personaKey === 'balbal') {
+        pName.textContent = "بلبل العبيط";
+        pIcon.textContent = "🧸";
+        showToast("اتفتحت شخصية بلبل (النكش والهزار وقعدة الرصيف) 🧸");
+      } else if (personaKey === 'seela') {
+        pName.textContent = "سيلا (سلطانة النوم)";
+        pIcon.textContent = "😴";
+        showToast("اتفتحت شخصية سيلا السرية (شخصية هنا لما تفصل شحن وتهتري بالكلام) 😴🌙", 4000);
+      }
+
+      // Highlight active persona card in grid
+      ['shereef', 'dark', 'balbal', 'seela'].forEach(k => {
+        const c = document.getElementById(`card-persona-${k}`);
+        if (c) {
+          if (k === personaKey) {
+            c.classList.add('ring-2', 'ring-purple-400', 'shadow-purple-glow');
+          } else {
+            c.classList.remove('ring-2', 'ring-purple-400', 'shadow-purple-glow');
+          }
+        }
+      });
+    }
+
+    function openPersonaModal() {
+      const modal = document.getElementById('app-modal');
+      const card = document.getElementById('modal-card');
+      const tagBadge = document.getElementById('modal-tag-badge');
+      const content = document.getElementById('modal-body-content');
+
+      tagBadge.textContent = "تبديل المود • شخصياتنا الأربعة";
+
+      content.innerHTML = `
+        <h2 class="text-2xl font-black font-cairo text-white text-center mb-2">
+          اختاري الشخصية اللي في مودها دلوقتي
+        </h2>
+        <p class="text-xs text-zinc-400 font-tajawal text-center mb-6">
+          كل شخصية بتغير شكل الجو والإضاءة بتاعة الموقع
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <button type="button" onclick="selectPersona('shereef'); closeModal();" class="glass-panel p-4 rounded-2xl text-center hover:border-purple-400 transition-all min-touch">
+            <span class="text-3xl block mb-2">🤍</span>
+            <span class="font-bold text-white block text-sm">شريف الحنين</span>
+            <span class="text-[11px] text-purple-300 font-tajawal">الأمان والسند</span>
+          </button>
+
+          <button type="button" onclick="selectPersona('dark'); closeModal();" class="glass-panel p-4 rounded-2xl text-center hover:border-red-400 transition-all min-touch">
+            <span class="text-3xl block mb-2">🖤</span>
+            <span class="font-bold text-white block text-sm">دارك شريف</span>
+            <span class="text-[11px] text-red-300 font-tajawal">الدرع الواقي</span>
+          </button>
+
+          <button type="button" onclick="selectPersona('balbal'); closeModal();" class="glass-panel p-4 rounded-2xl text-center hover:border-amber-400 transition-all min-touch">
+            <span class="text-3xl block mb-2">🧸</span>
+            <span class="font-bold text-white block text-sm">بلبل</span>
+            <span class="text-[11px] text-amber-300 font-tajawal">الطفل الهزاز</span>
+          </button>
+
+          <button type="button" onclick="selectPersona('seela'); closeModal();" class="glass-panel p-4 rounded-2xl text-center hover:border-sky-400 transition-all min-touch">
+            <span class="text-3xl block mb-2">😴🌙</span>
+            <span class="font-bold text-white block text-sm">سيلا</span>
+            <span class="text-[11px] text-sky-300 font-tajawal">سلطانة النوم</span>
+          </button>
+        </div>
+      `;
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      card.classList.remove('scale-95');
+    }
+
+    /**
+     * =================================================================
+     * 17. FUTURE DREAMS BUCKET LIST
+     * =================================================================
+     */
+    function renderBucketList() {
+      const container = document.getElementById('bucket-items-container');
+      const badge = document.getElementById('bucket-progress-badge');
+      const completed = loadStorage(STORAGE_KEYS.BUCKET_LIST, []);
+      container.innerHTML = '';
+
+      badge.textContent = `أنجزنا ${completed.length} من ${CONFIG.bucketList.length} أحلام`;
+
+      CONFIG.bucketList.forEach(item => {
+        const isDone = completed.includes(item.id);
+        const row = document.createElement('div');
+        row.className = `p-4 rounded-2xl glass-pill flex items-center justify-between gap-4 transition-all min-touch ${
+          isDone ? 'border-purple-500/40 bg-purple-950/20' : 'hover:border-white/20'
+        }`;
+
+        row.innerHTML = `
+          <div class="flex items-center gap-3">
+            <input 
+              type="checkbox" 
+              id="${item.id}" 
+              ${isDone ? 'checked' : ''} 
+              onchange="toggleBucketItem('${item.id}')"
+              class="w-5 h-5 rounded-lg accent-purple-600 cursor-pointer min-touch"
+            />
+            <label for="${item.id}" class="text-xs md:text-sm font-tajawal cursor-pointer ${isDone ? 'line-through text-zinc-400' : 'text-zinc-200'}">
+              ${item.title}
+            </label>
+          </div>
+          ${isDone ? `
+            <span class="text-xs text-purple-400 font-bold font-tajawal shrink-0">تحقق بفضل الله ❤️</span>
+          ` : `
+            <span class="text-[11px] text-zinc-500 font-tajawal shrink-0">مستنيين اللحظة</span>
+          `}
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    function toggleBucketItem(id) {
+      let completed = loadStorage(STORAGE_KEYS.BUCKET_LIST, []);
+      if (completed.includes(id)) {
+        completed = completed.filter(x => x !== id);
+      } else {
+        completed.push(id);
+        confetti({ particleCount: 30, spread: 60, origin: { y: 0.7 } });
+        showToast("حلم اتحقق وبقى في ذكرياتنا ❤️");
+      }
+      saveStorage(STORAGE_KEYS.BUCKET_LIST, completed);
+      renderBucketList();
+    }
+
+    /**
+     * =================================================================
+     * 18. TIME CAPSULE INTERACTION
+     * =================================================================
+     */
+    function initCapsuleWish() {
+      const saved = loadStorage(STORAGE_KEYS.CAPSULE_WISH, null);
+      const inputContainer = document.getElementById('capsule-input-container');
+      const savedContainer = document.getElementById('capsule-saved-container');
+      const preview = document.getElementById('capsule-saved-preview');
+
+      if (!inputContainer || !savedContainer) return;
+
+      if (saved && saved.text) {
+        inputContainer.classList.add('hidden');
+        savedContainer.classList.remove('hidden');
+        if (preview) {
+          preview.textContent = `"${saved.text}"`;
+        }
+      } else {
+        inputContainer.classList.remove('hidden');
+        savedContainer.classList.add('hidden');
+      }
+    }
+
+    function saveCapsuleWish() {
+      const textarea = document.getElementById('capsule-user-wish');
+      if (!textarea) return;
+      const text = textarea.value.trim();
+
+      if (!text) {
+        showToast("اكتبي أمنيتك أو رسالتك الأول يا هنا علشان نختمها بالشمع الأحمر! 💌✨");
+        textarea.focus();
+        return;
+      }
+
+      const wishData = {
+        text: text,
+        date: new Date().toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })
+      };
+
+      saveStorage(STORAGE_KEYS.CAPSULE_WISH, wishData);
+
+      confetti({
+        particleCount: 60,
+        spread: 80,
+        origin: { y: 0.7 },
+        colors: ['#e11d48', '#a855f7', '#fbbf24']
+      });
+
+      showToast("اتختمت بالشمع الأحمر واتحفظت في كبسولة الزمن للأبد! 🔒❤️", 4000);
+      initCapsuleWish();
+    }
+
+    function readCapsuleWish() {
+      const saved = loadStorage(STORAGE_KEYS.CAPSULE_WISH, null);
+      if (!saved || !saved.text) {
+        showToast("مفيش رسالة محفوظة لسه!");
+        return;
+      }
+
+      const modal = document.getElementById('app-modal');
+      const card = document.getElementById('modal-card');
+      const tagBadge = document.getElementById('modal-tag-badge');
+      const content = document.getElementById('modal-body-content');
+
+      tagBadge.textContent = "كبسولة الزمن • أمنيتكِ المختومة 💌🔒";
+      content.innerHTML = `
+        <div class="text-center py-2 space-y-4">
+          <div class="w-16 h-16 rounded-full bg-red-950/70 border-2 border-red-500/50 flex items-center justify-center mx-auto text-2xl shadow-red-glow">
+            🕯️
+          </div>
+          <h2 class="text-xl md:text-2xl font-black font-cairo text-white">
+            رسالتكِ المحفوظة في كبسولة الزمن
+          </h2>
+          <div class="p-5 rounded-2xl bg-black/60 border border-purple-500/30 text-right">
+            <p class="text-sm md:text-base text-purple-100 font-tajawal leading-relaxed whitespace-pre-line">
+              "${saved.text}"
+            </p>
+            ${saved.date ? `<div class="mt-4 pt-3 border-t border-purple-500/20 text-left text-[11px] text-zinc-400 font-tajawal">ختمتيها بتاريخ: ${saved.date}</div>` : ''}
+          </div>
+          <div class="flex items-center justify-center gap-3 pt-2">
+            <button type="button" onclick="closeModal()" class="px-6 py-2.5 rounded-full bg-purple-600 text-white text-xs font-bold font-tajawal min-touch">
+              إغلاق
+            </button>
+            <button type="button" onclick="closeModal(); editCapsuleWish();" class="px-5 py-2.5 rounded-full bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-tajawal min-touch">
+              تعديل الرسالة
+            </button>
+          </div>
+        </div>
+      `;
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      card.classList.remove('scale-95');
+    }
+
+    function editCapsuleWish() {
+      const saved = loadStorage(STORAGE_KEYS.CAPSULE_WISH, null);
+      const textarea = document.getElementById('capsule-user-wish');
+      const inputContainer = document.getElementById('capsule-input-container');
+      const savedContainer = document.getElementById('capsule-saved-container');
+
+      if (saved && saved.text && textarea) {
+        textarea.value = saved.text;
+      }
+      if (inputContainer && savedContainer) {
+        inputContainer.classList.remove('hidden');
+        savedContainer.classList.add('hidden');
+      }
+      if (textarea) {
+        textarea.focus();
+      }
+      showToast("تقدري تعدلي رسالتك وترجعي تختميها تاني بالشمع الأحمر ✨");
+    }
+
+    function handleTimeCapsuleClick() {
+      const now = new Date();
+      const modal = document.getElementById('app-modal');
+      const card = document.getElementById('modal-card');
+      const tagBadge = document.getElementById('modal-tag-badge');
+      const content = document.getElementById('modal-body-content');
+
+      if (now >= CONFIG.dates.nextAnniversary) {
+        tagBadge.textContent = "كبسولة الزمن • فُتحت بنجاح 🎉";
+        content.innerHTML = `
+          <h2 class="text-2xl font-bold font-cairo text-white text-center mb-4">
+            الرسالة السرية للمستقبل ⏳
+          </h2>
+          <p class="text-sm md:text-base text-zinc-200 font-tajawal leading-relaxed mb-4">
+            "لو بتقرأي الكلام ده دلوقتي، يبقى عدت سنة تانية وإحنا لسه سوا، وحبنا أكبر من أي وقت فات.. شكراً إنك في حياتي يا هنا."
+          </p>
+          <div class="pt-4 text-center">
+            <button type="button" onclick="closeModal()" class="px-6 py-2 rounded-full bg-purple-600 text-white text-xs font-bold font-tajawal">
+              إغلاق
+            </button>
+          </div>
+        `;
+      } else {
+        const saved = loadStorage(STORAGE_KEYS.CAPSULE_WISH, null);
+        tagBadge.textContent = "كبسولة الزمن • مغلقة بإحكام 🔒";
+        content.innerHTML = `
+          <div class="text-center py-3 space-y-4">
+            <div class="text-5xl">⏳🔒</div>
+            <h2 class="text-xl md:text-2xl font-black font-cairo text-white">
+              لسه بدري.. متستعجليش يا هنا! 😂
+            </h2>
+            <p class="text-sm md:text-base text-zinc-300 font-tajawal leading-relaxed">
+              الكبسولة دي مقفولة برمز سري ومش هتفتح غير يوم <strong class="text-pink-300 font-cairo">10 يونيو 2025</strong> في ذكرى ارتباطنا القادمة.
+            </p>
+            ${saved && saved.text ? `
+              <div class="p-4 rounded-2xl bg-purple-950/40 border border-purple-500/30 text-right">
+                <span class="text-xs text-purple-300 font-bold block mb-1">💌 رسالتكِ المختومة في الأمان:</span>
+                <p class="text-xs text-zinc-300 font-tajawal italic line-clamp-2">"${saved.text}"</p>
+              </div>
+            ` : `
+              <div class="p-3 rounded-xl bg-purple-950/30 border border-purple-500/20 text-xs text-purple-300 font-tajawal">
+                💡 لسه مكتبتيش أمنيتك للكبسولة! تقدري تكتبيها وتختميها تحت بالشمع الأحمر.
+              </div>
+            `}
+            <div class="pt-2">
+              <button type="button" onclick="closeModal()" class="px-6 py-2.5 rounded-full bg-purple-600 text-white text-xs font-bold font-tajawal min-touch">
+                هصبر وأمري لله 😂
+              </button>
+            </div>
+          </div>
+        `;
+      }
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      card.classList.remove('scale-95');
+    }
+
+    /**
+     * =================================================================
+     * 19. SECRET EASTER EGG (CLICK 7 TIMES ON FOOTER STAR)
+     * =================================================================
+     */
+    function handleSecretEasterEggClick() {
+      APP_STATE.easterEggClicks++;
+      if (APP_STATE.easterEggClicks < 7) {
+        showToast(`لقيتي رمز سري؟ باقيلك ${7 - APP_STATE.easterEggClicks} كليكات 👀`);
+      } else {
+        saveStorage(STORAGE_KEYS.SECRET_FOUND, true);
+        confetti({
+          particleCount: 80,
+          spread: 90,
+          origin: { y: 0.8 },
+          colors: ['#ef4444', '#a855f7', '#ffd700']
+        });
+
+        const modal = document.getElementById('app-modal');
+        const card = document.getElementById('modal-card');
+        const tagBadge = document.getElementById('modal-tag-badge');
+        const content = document.getElementById('modal-body-content');
+
+        tagBadge.textContent = "Easter Egg • السر المكتوم";
+        content.innerHTML = `
+          <div class="text-center py-4">
+            <span class="text-4xl block mb-2">✦</span>
+            <h2 class="text-2xl font-black font-cairo text-white mb-2">
+              لقيتي السر يا هنا! 👀❤️
+            </h2>
+            <p class="text-sm md:text-base text-zinc-200 font-tajawal leading-relaxed mb-6">
+              "بحبك أكتر من أي حاجة في الدنيا دي كلها.. ومكنتش متخيل إن فضولك هيوصلك لحد هنا! إنتي أحلى سر وأغلى نعمة في حياتي كلها."
+            </p>
+            <button type="button" onclick="closeModal()" class="px-6 py-2.5 rounded-full bg-purple-600 text-white text-xs font-bold font-tajawal min-touch">
+              قفل السر في قلبي 🔒
+            </button>
+          </div>
+        `;
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        card.classList.remove('scale-95');
+        APP_STATE.easterEggClicks = 0;
+      }
+    }
+
+    /**
+     * =================================================================
+     * 20. MISS YOU SHORTCUT («وحشتيني»)
+     * =================================================================
+     */
+    function triggerMissYouShortcut() {
+      const modal = document.getElementById('app-modal');
+      const card = document.getElementById('modal-card');
+      const tagBadge = document.getElementById('modal-tag-badge');
+      const content = document.getElementById('modal-body-content');
+
+      tagBadge.textContent = "رسالة سريعة • وحشتيني";
+      content.innerHTML = `
+        <div class="text-center py-6">
+          <span class="text-5xl block mb-3">🥺❤️</span>
+          <h2 class="text-2xl md:text-3xl font-black font-cairo text-white mb-2">
+            وأنتي كمان وحشتيني ❤️
+          </h2>
+          <p class="text-sm md:text-base text-zinc-300 font-tajawal leading-relaxed mb-6">
+            وحشني كلامك وضحكتك وهزارك.. مفيش دقيقة بتعدي وانتي مش في بالي.
+          </p>
+          <button type="button" onclick="triggerRandomMemory(); closeModal();" class="px-6 py-3 rounded-full bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold font-tajawal min-touch">
+            وريني ذكرى نفتكرها سوا 🎲
+          </button>
+        </div>
+      `;
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      card.classList.remove('scale-95');
+    }
+
+    /**
+     * =================================================================
+     * 21. DRAWER NAVIGATION TOGGLE
+     * =================================================================
+     */
+    function toggleDrawer() {
+      const drawer = document.getElementById('drawer-menu');
+      const icon = document.getElementById('drawer-toggle-icon');
+
+      if (drawer.classList.contains('opacity-0')) {
+        drawer.classList.remove('opacity-0', 'pointer-events-none');
+        icon.className = "fa-solid fa-xmark";
+      } else {
+        drawer.classList.add('opacity-0', 'pointer-events-none');
+        icon.className = "fa-solid fa-bars";
+      }
+    }
+
+    function shareWebsiteLink() {
+      if (navigator.share) {
+        navigator.share({
+          title: CONFIG.siteName,
+          text: CONFIG.tagline,
+          url: window.location.href
+        }).catch(() => {});
+      } else if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          showToast("تم نسخ رابط الحكاية في الحافظة 📋");
+        }).catch(() => {
+          showToast("انسخي الرابط من شريط المتصفح 📋");
+        });
+      } else {
+        showToast("انسخي الرابط من شريط المتصفح 📋");
+      }
+    }
+
+    /**
+     * =================================================================
+     * 22. INITIALIZATION ROUTINE
+     * =================================================================
+     */
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Start canvas atmosphere
+      try { initAtmosphericCanvas(); } catch(e) { console.warn("Canvas warning:", e); }
+
+      // 2. Setup Password Gate & Monologue
+      try { setupTrollButton(); } catch(e) { console.warn("Troll button warning:", e); }
+      try { runGateMonologue(); } catch(e) { console.warn("Monologue warning:", e); }
+
+      // Password visibility toggle
+      const pwdToggle = document.getElementById('toggle-pwd-visibility');
+      if (pwdToggle) {
+        pwdToggle.addEventListener('click', () => {
+          const inp = document.getElementById('password-input');
+          const icon = document.querySelector('#toggle-pwd-visibility i');
+          if (!inp || !icon) return;
+          if (inp.type === 'password') {
+            inp.type = 'text';
+            icon.className = 'fa-regular fa-eye-slash text-sm';
+          } else {
+            inp.type = 'password';
+            icon.className = 'fa-regular fa-eye text-sm';
+          }
+        });
+      }
+
+      // Hint toggle
+      const hintBtn = document.getElementById('hint-btn');
+      if (hintBtn) {
+        hintBtn.addEventListener('click', () => {
+          const hintText = document.getElementById('hint-text');
+          if (hintText) hintText.classList.toggle('hidden');
+        });
+      }
+
+      // Audio toggle
+      const audioBtn = document.getElementById('audio-toggle-btn');
+      if (audioBtn) {
+        audioBtn.addEventListener('click', toggleAudio);
+      }
+
+      // 3. Check for previous unlock
+      const isUnlocked = loadStorage(STORAGE_KEYS.UNLOCKED, false);
+      if (isUnlocked) {
+        // Allow instant bypass with welcoming toast
+        const gate = document.getElementById('entry-gate');
+        const world = document.getElementById('main-world');
+        if (gate) gate.classList.add('opacity-0', 'pointer-events-none');
+        if (world) {
+          world.classList.remove('opacity-0');
+          world.classList.add('opacity-100');
+        }
+        showToast("رجعتي تاني لعالمنا يا هنا؟ نورتي بيتك 💜", 4000);
+      }
+
+      // 4. Set current date on Chapter 05
+      const today = new Date();
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      const chapDate = document.getElementById('chapter-today-date');
+      if (chapDate) {
+        chapDate.textContent = today.toLocaleDateString('ar-EG', options);
+      }
+
+      // 5. Render dynamic modules safely
+      try { renderMemoriesGrid(); } catch(e) { console.warn("Memories warning:", e); }
+      try { renderChatMessages(); } catch(e) { console.warn("Chat warning:", e); }
+      try { renderEnvelopesGrid(); } catch(e) { console.warn("Envelopes warning:", e); }
+      try { renderQuizQuestion(); } catch(e) { console.warn("Quiz warning:", e); }
+      try { renderBucketList(); } catch(e) { console.warn("Bucket warning:", e); }
+      try { initCapsuleWish(); } catch(e) { console.warn("Capsule wish warning:", e); }
+      try { setupHeroCtaCycling(); } catch(e) { console.warn("Hero CTA warning:", e); }
+
+      // 6. Chronometer loop
+      try {
+        updateChronometers();
+        setInterval(updateChronometers, 1000);
+      } catch(e) {
+        console.warn("Chronometer warning:", e);
+      }
+
+      // 7. Load saved persona
+      try {
+        const savedPersona = loadStorage(STORAGE_KEYS.PERSONA, 'shereef');
+        selectPersona(savedPersona);
+      } catch(e) {
+        console.warn("Persona warning:", e);
+      }
+    });
+  </script>
+</body>
+</html>
